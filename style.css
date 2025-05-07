@@ -20,6 +20,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', sans-serif;
 }
 
+.nowrap {
+    white-space: nowrap;
+}
+
 .gradient-text {
     background: linear-gradient(90deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
@@ -162,7 +166,6 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
 }
-
 
 
 .loader {
