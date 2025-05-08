@@ -24,6 +24,13 @@ h1, h2, h3, h4, h5, h6 {
     white-space: nowrap;
 }
 
+#mobile-menu{
+    position: absolute;
+    right: 0;
+    width: 100%;
+    text-align: center;
+}
+
 .gradient-text {
     background: linear-gradient(90deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
