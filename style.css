@@ -17,6 +17,25 @@ body {
     top: 0px !important;
 }
 
+.translate-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.5);
+    transition: all 0.3s ease;
+}
+
 .ita, .eng {
   transition: opacity 0.3s ease;
 }

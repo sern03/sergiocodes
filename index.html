@@ -15,6 +15,14 @@
         <div class="animated-bg"></div>
         <div class="cursor-glow" style="left: 887px; top: 569px;"></div>
 
+        <!-- Translation Button -->
+        <div class="translate-btn-container">
+            <button class="translate-btn" id="translateBtn" onclick="toggleLanguage()" aria-label="Traduci">
+                <img src="https://flagcdn.com/w40/us.png" class="w-6 h-4 inline ita">
+                <img src="https://flagcdn.com/w40/it.png" class="w-6 h-4 inline eng" style="display: none;">
+            </button>
+        </div>
+        
         <!-- Navigation -->
         <nav class="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-indigo-500/20">
             <div class="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -38,10 +46,6 @@
 
                     <a href="#contact" class="nav-link text-gray-300 hover:text-white ita">Contatti</a>
                     <a href="#contact" class="nav-link text-gray-300 hover:text-white eng">Contact</a>
-
-                    <button id="langBtn" onclick="toggleLanguage()" class="hidden px-6 py-3 bg-transparent border border-indigo-500 text-white hover:bg-indigo-500/10 rounded-lg transition-all" style="padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px;">
-                        IT / EN
-                    </button>
                 </div>
                 <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
