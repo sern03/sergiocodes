@@ -12,7 +12,6 @@
         <script src="script.js" defer></script>
     </head>
     <body class="min-h-screen">
-        <div id="google_translate_element" style="display:none;"></div>
         <div class="animated-bg"></div>
         <div class="cursor-glow" style="left: 887px; top: 569px;"></div>
 
@@ -25,28 +24,46 @@
                     <span class="code-bracket text-xl ml-1">/&gt;</span>
                 </div>
                 <div class="hidden md:flex space-x-6">
-                    <a href="#about" class="nav-link text-gray-300 hover:text-white">Chi sono</a>
-                    <a href="#skills" class="nav-link text-gray-300 hover:text-white">Competenze</a>
-                    <a href="#projects" class="nav-link text-gray-300 hover:text-white">Progetti</a>
-                    <a href="#education" class="nav-link text-gray-300 hover:text-white">Formazione</a>
-                    <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contatti</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white ita">Chi sono</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white eng">About Me</a>
+
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white ita">Competenze</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white eng">Skills</a>
+
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white ita">Progetti</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white eng">Projects</a>
+
+                    <a href="#education" class="nav-link text-gray-300 hover:text-white ita">Formazione</a>
+                    <a href="#education" class="nav-link text-gray-300 hover:text-white eng">Education</a>
+
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white ita">Contatti</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white eng">Contact</a>
                 </div>
                 <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
-                <button id="langBtn" onclick="toggleLanguage()" class="px-6 py-3 bg-transparent border border-indigo-500 text-white hover:bg-indigo-500/10 rounded-lg transition-all" style="padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px; display: none;">
+                <button id="langBtn" onclick="toggleLanguage()" class="px-6 py-3 bg-transparent border border-indigo-500 text-white hover:bg-indigo-500/10 rounded-lg transition-all" style="padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px;">
                     IT / EN
                 </button>
             </div>
             <div class="md:hidden hidden bg-gray-900/95 backdrop-blur-md" id="mobile-menu">
                 <div class="px-4 py-3 space-y-3">
-                    <a href="#about" class="block text-gray-300 hover:text-white">Chi sono</a>
-                    <a href="#skills" class="block text-gray-300 hover:text-white">Competenze</a>
-                    <a href="#projects" class="block text-gray-300 hover:text-white">Progetti</a>
-                    <a href="#education" class="block text-gray-300 hover:text-white">Formazione</a>
-                    <a href="#contact" class="block text-gray-300 hover:text-white">Contatti</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white ita">Chi sono</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white eng">About Me</a>
+
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white ita">Competenze</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white eng">Skills</a>
+
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white ita">Progetti</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white eng">Projects</a>
+
+                    <a href="#education" class="nav-link text-gray-300 hover:text-white ita">Formazione</a>
+                    <a href="#education" class="nav-link text-gray-300 hover:text-white eng">Education</a>
+
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white ita">Contatti</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white eng">Contact</a>
                 </div>
             </div>
         </nav>
@@ -57,15 +74,25 @@
                 <h1 class="text-4xl md:text-6xl font-bold mb-6">
                     <span class="gradient-text">Sergio Nicoletti</span>
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto ita">
                     Sviluppatore full-stack con esperienza nell’integrazione pratica dell’intelligenza artificiale
                 </p>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto eng">
+                    Full-stack developer with experience in the practical integration of artificial intelligence
+                </p>
+
                 <div class="flex flex-wrap justify-center gap-4 mb-12">
-                    <a href="#projects" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-all shadow-lg hover:shadow-indigo-500/30">
+                    <a href="#projects" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-all shadow-lg hover:shadow-indigo-500/30 ita">
                         Esplora i miei progetti
                     </a>
-                    <a href="#contact" class="px-6 py-3 bg-transparent border border-indigo-500 text-white hover:bg-indigo-500/10 rounded-lg transition-all">
+                    <a href="#projects" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-all shadow-lg hover:shadow-indigo-500/30 eng">
+                        Explore my projects
+                    </a>
+                    <a href="#contact" class="px-6 py-3 bg-transparent border border-indigo-500 text-white hover:bg-indigo-500/10 rounded-lg transition-all ita">
                         Contattami
+                    </a>
+                    <a href="#contact" class="px-6 py-3 bg-transparent border border-indigo-500 text-white hover:bg-indigo-500/10 rounded-lg transition-all eng">
+                        Contact me
                     </a>
                 </div>
                 <div class="flex justify-center space-x-6 text-gray-400">
@@ -95,11 +122,17 @@
         <!-- About Section -->
         <section id="about" class="py-20 px-4 relative">
             <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center ita">
                     <span class="code-bracket">&lt;</span>
                     Chi Sono
                     <span class="code-bracket">/&gt;</span>
                 </h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center eng">
+                    <span class="code-bracket">&lt;</span>
+                    About Me
+                    <span class="code-bracket">/&gt;</span>
+                </h2>
+
                 <div class="flex flex-col md:flex-row gap-10 items-center">
                     <div class="md:w-1/3">
                         <div class="relative">
@@ -107,11 +140,13 @@
                                 <img src="img.jpg" alt="">
                             </div>
                             <div class="absolute -bottom-3 -right-3 bg-indigo-600 text-white px-4 py-1 rounded-full shadow-lg">
-                                <span class="text-sm">Roma, Italia</span>
+                                <span class="text-sm ita">Roma, Italia</span>
+                                <span class="text-sm eng">Rome, Italy</span>
                             </div>
                         </div>
                         <div class="mt-8 text-center">
-                            <p class="text-gray-400">Data di nascita: 09/09/2003</p>
+                            <p class="text-gray-400 ita">Data di nascita: 09/09/2003</p>
+                            <p class="text-gray-400 eng">Date of birth: 09/09/2003</p>
                             <div class="flex justify-center space-x-4 mt-4">
                                 <a href="mailto:sernicoletti03@gmail.com" class="flex items-center text-gray-300 hover:text-white">
                                     <i class="fas fa-envelope mr-2"></i>
@@ -128,19 +163,36 @@
                     </div>
                     <div class="md:w-2/3">
                         <div class="card p-8 rounded-xl">
-                            <h3 class="text-2xl font-semibold mb-4 gradient-text">Profilo personale</h3>
-                            <p class="text-gray-300 leading-relaxed mb-6">
+                            <h3 class="text-2xl font-semibold mb-4 gradient-text ita">Profilo personale</h3>
+                            <h3 class="text-2xl font-semibold mb-4 gradient-text eng">Personal Profile</h3>
+
+                            <p class="text-gray-300 leading-relaxed mb-6 ita">
                                 Appassionato di sviluppo informatico sin da giovane età, ho iniziato a programmare a 11 anni e ho progressivamente sviluppato una solida capacità di apprendimento autonomo, affrontando con successo progetti in diversi ambienti e tecnologie.
                             </p>
-                            <p class="text-gray-300 leading-relaxed mb-6">
+                            <p class="text-gray-300 leading-relaxed mb-6 eng">
+                                Passionate about software development from a young age, I started programming at 11 and progressively developed a strong self-learning ability, successfully tackling projects in various environments and technologies.
+                            </p>
+
+                            <p class="text-gray-300 leading-relaxed mb-6 ita">
                                 Il mio approccio pratico mi permette di adattarmi rapidamente a nuove sfide e di gestire con autonomia lo sviluppo di sistemi anche complessi.
                             </p>
+                            <p class="text-gray-300 leading-relaxed mb-6 eng">
+                                My practical approach allows me to quickly adapt to new challenges and independently manage the development of even complex systems.
+                            </p>
+
                             <div class="mt-8">
-                                <h4 class="text-xl font-semibold mb-3 text-indigo-400">Hobby e interessi</h4>
+                                <h4 class="text-xl font-semibold mb-3 text-indigo-400 ita">Hobby e interessi</h4>
+                                <h4 class="text-xl font-semibold mb-3 text-indigo-400 eng">Hobbies and Interests</h4>
+
                                 <div class="flex flex-wrap gap-3">
-                                    <span class="skill-pill px-4 py-2 rounded-full text-sm">Attività sportiva</span>
-                                    <span class="skill-pill px-4 py-2 rounded-full text-sm">Scacchi</span>
-                                    <span class="skill-pill px-4 py-2 rounded-full text-sm">Natura</span>
+                                    <span class="skill-pill px-4 py-2 rounded-full text-sm ita">Attività sportiva</span>
+                                    <span class="skill-pill px-4 py-2 rounded-full text-sm eng">Sports</span>
+
+                                    <span class="skill-pill px-4 py-2 rounded-full text-sm ita">Scacchi</span>
+                                    <span class="skill-pill px-4 py-2 rounded-full text-sm eng">Chess</span>
+
+                                    <span class="skill-pill px-4 py-2 rounded-full text-sm ita">Natura</span>
+                                    <span class="skill-pill px-4 py-2 rounded-full text-sm eng">Nature</span>
                                 </div>
                             </div>
                         </div>
@@ -154,15 +206,20 @@
         <!-- Skills Section -->
         <section id="skills" class="py-20 px-4 relative">
             <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center ita">
                     <span class="code-bracket">&lt;</span>
                     Competenze&nbsp;
                     <span class="nowrap"><span class="text-white">Tecniche</span><span class="code-bracket">/&gt;</span></span>
                 </h2>
-                
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center eng">
+                    <span class="code-bracket">&lt;</span>
+                    Skills&nbsp;
+                    <span class="nowrap"><span class="text-white">Technical</span><span class="code-bracket">/&gt;</span></span>
+                </h2>                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div class="card p-8 rounded-xl">
-                        <h3 class="text-2xl font-semibold mb-6 gradient-text">Linguaggi di programmazione</h3>
+                        <h3 class="text-2xl font-semibold mb-6 gradient-text ita">Linguaggi di programmazione</h3>
+                        <h3 class="text-2xl font-semibold mb-6 gradient-text eng">Programming Languages</h3>
                         <div class="flex flex-wrap gap-3">
                             <span class="skill-pill px-4 py-2 rounded-full text-sm">Python</span>
                             <span class="skill-pill px-4 py-2 rounded-full text-sm">PHP</span>
@@ -187,67 +244,83 @@
                     </div>
                     
                     <div class="card p-8 rounded-xl">
-                        <h3 class="text-2xl font-semibold mb-6 gradient-text">Altre competenze</h3>
+                        <h3 class="text-2xl font-semibold mb-6 gradient-text ita">Altre competenze</h3>
+                        <h3 class="text-2xl font-semibold mb-6 gradient-text eng">Other skills</h3>
+
                         <ul class="space-y-4 text-gray-300">
                             <li class="flex items-start">
                                 <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Integrazione avanzata di strumenti di intelligenza artificiale nello sviluppo software</span>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                <span class="ita">Integrazione avanzata di strumenti di intelligenza artificiale nello sviluppo software</span>
+                                <span class="eng">Advanced integration of artificial intelligence tools in software development</span>
                             </li>
                             <li class="flex items-start">
                                 <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Esperienza nello sviluppo full stack</span>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                <span class="ita">Esperienza nello sviluppo full stack</span>
+                                <span class="eng">Experience in full-stack development</span>
                             </li>
                             <li class="flex items-start">
                                 <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Automazione di processi</span>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                <span class="ita">Automazione di processi</span>
+                                <span class="eng">Process automation</span>
                             </li>
                             <li class="flex items-start">
                                 <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Integrazione di API esterne</span>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                <span class="ita">Integrazione di API esterne</span>
+                                <span class="eng">Integration of external APIs</span>
                             </li>
                             <li class="flex items-start">
                                 <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Utilizzo avanzato dell'IA come potenziamento delle proprie capacità, non come sostituto</span>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                <span class="ita">Utilizzo avanzato dell'IA come potenziamento delle proprie capacità, non come sostituto</span>
+                                <span class="eng">Advanced use of AI as an enhancement of one's capabilities, not as a replacement</span>
                             </li>
                         </ul>
-                        
-                        <h3 class="text-2xl font-semibold mb-6 mt-8 gradient-text">Competenze trasversali</h3>
+
+                        <h3 class="text-2xl font-semibold mb-6 mt-8 gradient-text ita">Competenze trasversali</h3>
+                        <h3 class="text-2xl font-semibold mb-6 mt-8 gradient-text eng">Soft skills</h3>
+
                         <ul class="space-y-4 text-gray-300">
                             <li class="flex items-start">
                                 <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Curiosità e apertura verso l’adozione di nuove tecnologie nel lavoro quotidiano</span>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                <span class="ita">Curiosità e apertura verso l’adozione di nuove tecnologie nel lavoro quotidiano</span>
+                                <span class="eng">Curiosity and openness towards adopting new technologies in daily work</span>
                             </li>
                             <li class="flex items-start">
                                 <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Apprendimento rapido e adattabilità</span>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                <span class="ita">Apprendimento rapido e adattabilità</span>
+                                <span class="eng">Fast learning and adaptability</span>
                             </li>
                             <li class="flex items-start">
                                 <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Attitudine al problem solving e all'autonomia</span>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                <span class="ita">Attitudine al problem solving e all'autonomia</span>
+                                <span class="eng">Problem-solving attitude and autonomy</span>
                             </li>
                         </ul>
-                        
-                        <h3 class="text-2xl font-semibold mb-6 mt-8 gradient-text">Lingue</h3>
+
+                        <h3 class="text-2xl font-semibold mb-6 mt-8 gradient-text ita">Lingue</h3>
+                        <h3 class="text-2xl font-semibold mb-6 mt-8 gradient-text eng">Languages</h3>
+
                         <div class="flex items-center">
-                            <span class="mr-3">Inglese:</span>
+                            <span class="mr-3 ita">Inglese:</span>
+                            <span class="mr-3 eng">English:</span>
                             <div class="flex">
-                                <span class="skill-pill px-4 py-1 rounded-full text-sm">Intermedio, autonomia nella comunicazione scritta e orale</span>
+                                <span class="skill-pill px-4 py-1 rounded-full text-sm ita">Intermedio, autonomia nella comunicazione scritta e orale</span>
+                                <span class="skill-pill px-4 py-1 rounded-full text-sm eng">Intermediate, independent in written and spoken communication</span>
                             </div>
                         </div>
                     </div>
@@ -260,12 +333,16 @@
         <!-- Projects Section -->
         <section id="projects" class="py-20 px-4 relative">
             <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center ita">
                     <span class="code-bracket">&lt;</span>
                     Esperienze professionali e progetti
                     <span class="code-bracket">/&gt;</span>
                 </h2>
-                
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center eng">
+                    <span class="code-bracket">&lt;</span>
+                    Professional Experiences and Projects
+                    <span class="code-bracket">/&gt;</span>
+                </h2>
                 <div class="relative">
                     <div class="projects-container flex overflow-x-auto pb-8 hide-scrollbar" id="projectsSlider">
                         <!-- Project 1 -->
@@ -275,9 +352,14 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text">Algoritmo AI</h3>
-                            <p class="text-gray-300 flex-grow">
+                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Algoritmo AI</h3>
+                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">AI Algorithm</h3>
+
+                            <p class="text-gray-300 flex-grow ita">
                                 Sviluppo di un'applicazione personale con integrazione di intelligenza artificiale per l’automazione di processi complessi, sfruttando modelli linguistici avanzati e servizi esterni tramite API.
+                            </p>
+                            <p class="text-gray-300 flex-grow eng">
+                                Development of a personal application integrating artificial intelligence for the automation of complex processes, leveraging advanced language models and external services via API.
                             </p>
                             <div class="mt-4 flex flex-wrap gap-2">
                                 <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Python</span>
@@ -293,9 +375,14 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text">Gestionale turni per franchising McDonald’s</h3>
-                            <p class="text-gray-300 flex-grow">
-                                Sviluppo di un gestionale per la gestione dei dipendenti e la generazione automatica dei turni su base parametrica.                            
+                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Gestionale turni per franchising McDonald’s</h3>
+                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">Shift Management System for McDonald’s Franchise</h3>
+
+                            <p class="text-gray-300 flex-grow ita">
+                                Sviluppo di un gestionale per la gestione dei dipendenti e la generazione automatica dei turni su base parametrica.
+                            </p>
+                            <p class="text-gray-300 flex-grow eng">
+                                Development of a management system for employee scheduling and automatic shift generation based on parameters.
                             </p>
                             <div class="mt-4 flex flex-wrap gap-2">
                                 <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Visual Basic</span>
@@ -311,9 +398,14 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text">Sito aziendale per realtà logistica</h3>
-                            <p class="text-gray-300 flex-grow">
-                                Sviluppo del sito web vetrina per un’azienda del settore logistico.                       
+                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Sito aziendale per realtà logistica</h3>
+                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">Corporate Website for a Logistics Company</h3>
+
+                            <p class="text-gray-300 flex-grow ita">
+                                Sviluppo del sito web vetrina per un’azienda del settore logistico.
+                            </p>
+                            <p class="text-gray-300 flex-grow eng">
+                                Development of a showcase website for a company in the logistics sector.
                             </p>
                             <div class="mt-4 flex flex-wrap gap-2">
                                 <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">HTML</span>
@@ -329,9 +421,14 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text">App per gestione rifornimenti carburante</h3>
-                            <p class="text-gray-300 flex-grow">
+                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">App per gestione rifornimenti carburante</h3>
+                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">App for Managing Fuel Refueling</h3>
+
+                            <p class="text-gray-300 flex-grow ita">
                                 Sviluppo di un'app Android per la gestione dei rifornimenti di carburante effettuati dai dipendenti all'interno di un contesto aziendale logistico.
+                            </p>
+                            <p class="text-gray-300 flex-grow eng">
+                                Development of an Android app for managing fuel refueling carried out by employees within a logistics company.
                             </p>
                             <div class="mt-4 flex flex-wrap gap-2">
                                 <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Java</span>
@@ -346,9 +443,14 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text">Software per gestione biblioteca scolastica</h3>
-                            <p class="text-gray-300 flex-grow">
+                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Software per gestione biblioteca scolastica</h3>
+                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">Software for School Library Management</h3>
+
+                            <p class="text-gray-300 flex-grow ita">
                                 Applicazione per la gestione dei prestiti e del catalogo in una biblioteca scolastica.
+                            </p>
+                            <p class="text-gray-300 flex-grow eng">
+                                Application for managing loans and the catalog in a school library.
                             </p>
                             <div class="mt-4 flex flex-wrap gap-2">
                                 <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">PHP</span>
@@ -364,9 +466,14 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text">Sito vetrina per un’associazione</h3>
-                            <p class="text-gray-300 flex-grow">
-                                Creazione di un sito web per la presentazione pubblica di un'associazione.                            
+                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Sito vetrina per un’associazione</h3>
+                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">Showcase Website for an Association</h3>
+
+                            <p class="text-gray-300 flex-grow ita">
+                                Creazione di un sito web per la presentazione pubblica di un'associazione.
+                            </p>
+                            <p class="text-gray-300 flex-grow eng">
+                                Creation of a website for the public presentation of an association.
                             </p>
                             <div class="mt-4 flex flex-wrap gap-2">
                                 <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">HTML</span>
@@ -382,9 +489,14 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text">Sistema gestione noleggi con PDF</h3>
-                            <p class="text-gray-300 flex-grow">
+                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Sistema gestione noleggi con PDF</h3>
+                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">Rental Management System with PDF</h3>
+
+                            <p class="text-gray-300 flex-grow ita">
                                 Sviluppo di un software per la gestione e generazione automatica di contratti di noleggio auto.
+                            </p>
+                            <p class="text-gray-300 flex-grow eng">
+                                Development of software for managing and automatically generating car rental contracts.
                             </p>
                             <div class="mt-4 flex flex-wrap gap-2">
                                 <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">PHP</span>
@@ -400,9 +512,14 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text">Sito web per pizzeria locale</h3>
-                            <p class="text-gray-300 flex-grow">
+                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Sito web per pizzeria locale</h3>
+                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">Website for a Local Pizzeria</h3>
+
+                            <p class="text-gray-300 flex-grow ita">
                                 Realizzazione di un sito web vetrina per una pizzeria.
+                            </p>
+                            <p class="text-gray-300 flex-grow eng">
+                                Development of a showcase website for a pizzeria.
                             </p>
                             <div class="mt-4 flex flex-wrap gap-2">
                                 <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">HTML</span>
@@ -426,7 +543,8 @@
                 </div>
                 
                 <div class="mt-8 text-center text-gray-400 text-sm">
-                    <p>Tutti i progetti elencati sono stati da me ideati e sviluppati integralmente, in autonomia o su richiesta di clienti privati, curandone sia la progettazione che l'implementazione tecnica.</p>
+                    <p class="ita">Tutti i progetti elencati sono stati da me ideati e sviluppati integralmente, in autonomia o su richiesta di clienti privati, curandone sia la progettazione che l'implementazione tecnica.</p>
+                    <p class="eng">All the listed projects were entirely designed and developed by me, either independently or upon request from private clients, taking care of both the design and technical implementation.</p>
                 </div>
             </div>
         </section>
@@ -436,12 +554,16 @@
         <!-- Education Section -->
         <section id="education" class="py-20 px-4 relative">
             <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center ita">
                     <span class="code-bracket">&lt;</span>
                     Formazione
                     <span class="code-bracket">/&gt;</span>
                 </h2>
-                
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center eng">
+                    <span class="code-bracket">&lt;</span>
+                    Education
+                    <span class="code-bracket">/&gt;</span>
+                </h2>
                 <div class="max-w-3xl mx-auto">
                     <div class="card p-8 rounded-xl relative">
                         
@@ -456,45 +578,56 @@
                             </div>
                             <div>
                                 <h3 class="text-xl font-semibold gradient-text">IIS Statista Aldo Moro – Passo Corese (RI)</h3>
-                                <p class="text-gray-400">Diploma in Istituto Tecnico – Settore Tecnologico (ITT)</p>
+                                <p class="text-gray-400 ita">Diploma in Istituto Tecnico – Settore Tecnologico (ITT)</p>
+                                <p class="text-gray-400 eng">Technical Institute Diploma – Technological Sector (ITT)</p>
                             </div>
                         </div>
 
                         <div class="ml-16">
-                            <h4 class="text-lg font-medium text-indigo-400 mb-3">Competenze Tecnico-Pratiche Acquisite</h4>
+                            <h4 class="text-lg font-medium text-indigo-400 mb-3 ita">Competenze Tecnico-Pratiche Acquisite</h4>
+                            <h4 class="text-lg font-medium text-indigo-400 mb-3 eng">Technical and Practical Skills Acquired</h4>
                             <ul class="space-y-4 text-gray-300">
                                 <li class="flex items-start">
                                     <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span>Progettazione e sviluppo di sistemi integrati hardware/software con interfacce di comunicazione</span>
+                                    <span class="ita">Progettazione e sviluppo di sistemi integrati hardware/software con interfacce di comunicazione</span>
+                                    <span class="eng">Design and development of integrated hardware/software systems with communication interfaces</span>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span>Realizzazione e test di circuiti elettronici analogici e digitali</span>
+                                    <span class="ita">Realizzazione e test di circuiti elettronici analogici e digitali</span>
+                                    <span class="eng">Implementation and testing of analog and digital electronic circuits</span>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span>Utilizzo e integrazione di sensori per la raccolta e l’elaborazione di dati ambientali</span>
+                                    <span class="ita">Utilizzo e integrazione di sensori per la raccolta e l’elaborazione di dati ambientali</span>
+                                    <span class="eng">Use and integration of sensors for environmental data collection and processing</span>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span>Creazione e stampa di circuiti elettronici su PCB</span>
+                                    <span class="ita">Creazione e stampa di circuiti elettronici su PCB</span>
+                                    <span class="eng">Design and printing of electronic circuits on PCB</span>
                                 </li>
                             </ul>
                         </div>
-                        
                         <div class="ml-16" style="margin-top: 1.5rem;">
-                            <h4 class="text-lg font-medium text-indigo-400 mb-3">Progetto di maturità</h4>
-                            <p class="text-gray-300 mb-6">
+                            <h4 class="text-lg font-medium text-indigo-400 mb-3 ita">Progetto di maturità</h4>
+                            <h4 class="text-lg font-medium text-indigo-400 mb-3 eng">Graduation Project</h4>
+
+                            <p class="text-gray-300 mb-6 ita">
                                 Sviluppo di un veicolo autopilota in grado di evitare ostacoli ed eseguire manovre autonome. Il progetto comprendeva sia la progettazione hardware che software, inclusa la realizzazione di un sito web dedicato.
                             </p>
+                            <p class="text-gray-300 mb-6 eng">
+                                Development of a self-driving vehicle capable of avoiding obstacles and performing autonomous maneuvers. The project included both hardware and software design, as well as the creation of a dedicated website.
+                            </p>
+
                             <div class="mt-4 flex flex-wrap gap-2">
                                 <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">C++</span>
                                 <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Hardware</span>
@@ -511,15 +644,22 @@
         <!-- Contact Section -->
         <section id="contact" class="py-20 px-4 relative">
             <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center ita">
                     <span class="code-bracket">&lt;</span>
                     Contattami
                     <span class="code-bracket">/&gt;</span>
                 </h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center eng">
+                    <span class="code-bracket">&lt;</span>
+                    Contact Me
+                    <span class="code-bracket">/&gt;</span>
+                </h2>
+
                 
                 <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="card p-8 rounded-xl">
-                        <h3 class="text-2xl font-semibold mb-6 gradient-text">Informazioni di contatto</h3>
+                        <h3 class="text-2xl font-semibold mb-6 gradient-text ita">Informazioni di contatto</h3>
+                        <h3 class="text-2xl font-semibold mb-6 gradient-text eng">Contact Information</h3>
                         
                         <div class="space-y-6">
                             <div class="flex items-center">
@@ -537,7 +677,8 @@
                                     <i class="fas fa-phone text-indigo-400"></i>
                                 </div>
                                 <div>
-                                    <p class="text-sm text-gray-400">Telefono</p>
+                                    <p class="text-sm text-gray-400 ita">Telefono</p>
+                                    <p class="text-sm text-gray-400 eng">Phone</p>
                                     <a href="tel:+393516307729" class="text-white hover:text-indigo-300 transition-colors">+39 351 630 7729</a>
                                 </div>
                             </div>
@@ -547,41 +688,56 @@
                                     <i class="fas fa-map-marker-alt text-indigo-400"></i>
                                 </div>
                                 <div>
-                                    <p class="text-sm text-gray-400">Località</p>
-                                    <p class="text-white">Roma, Italia</p>
+                                    <p class="text-sm text-gray-400 ita">Località</p>
+                                    <p class="text-sm text-gray-400 eng">Location</p>
+
+                                    <p class="text-white ita">Roma, Italia</p>
+                                    <p class="text-white eng">Rome, Italy</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="card p-8 rounded-xl">
-                        <h3 class="text-2xl font-semibold mb-6 gradient-text">Inviami un messaggio</h3>
-                        
+                        <h3 class="text-2xl font-semibold mb-6 gradient-text ita">Inviami un messaggio</h3>
+                        <h3 class="text-2xl font-semibold mb-6 gradient-text eng">Send Me a Message</h3>
+
                         <form id="contactForm" class="space-y-4">
                             <div>
-                                <label for="name" class="block text-gray-400 mb-1">Nome</label>
+                                <label for="name" class="block text-gray-400 mb-1 ita">Nome</label>
+                                <label for="name" class="block text-gray-400 mb-1 eng">Name</label>
                                 <input type="text" id="name" name="user_name" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-500 transition-colors" required="">
                             </div>
-                            
+
                             <div>
-                                <label for="email" class="block text-gray-400 mb-1">Email</label>
+                                <label for="email" class="block text-gray-400 mb-1 ita">Email</label>
+                                <label for="email" class="block text-gray-400 mb-1 eng">Email</label>
                                 <input type="email" id="email" name="user_email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-500 transition-colors" required="">
                             </div>
-                            
+
                             <div>
-                                <label for="message" class="block text-gray-400 mb-1">Messaggio</label>
+                                <label for="message" class="block text-gray-400 mb-1 ita">Messaggio</label>
+                                <label for="message" class="block text-gray-400 mb-1 eng">Message</label>
                                 <textarea id="message" rows="4" name="message" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-500 transition-colors" required=""></textarea>
                             </div>
-                            
-                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-all shadow-lg hover:shadow-indigo-500/30">
+
+                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-all shadow-lg hover:shadow-indigo-500/30 ita">
                                 Invia messaggio
+                            </button>
+                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-all shadow-lg hover:shadow-indigo-500/30 eng">
+                                Send Message
                             </button>
                         </form>
 
                         <div id="loader" class="loader"></div>
-                        
+
                         <div id="formSuccess" class="hidden mt-4 p-3 bg-green-500/20 border border-green-500/30 text-green-400 rounded-lg">
-                            Messaggio inviato con successo! Ti risponderò al più presto.
+                            <div class="ita">
+                                Messaggio inviato con successo! Ti risponderò al più presto.
+                            </div>
+                            <div class="eng">
+                                Message sent successfully! I will get back to you as soon as possible.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -615,22 +771,11 @@
                 </div>
                 
                 <div class="mt-8 text-center text-gray-500 text-sm">
-                    <p>© 2025 Sergio Nicoletti. Tutti i diritti riservati.</p>
+                    <p class="ita">© 2025 Sergio Nicoletti. Tutti i diritti riservati.</p>
+                    <p class="eng">© 2025 Sergio Nicoletti. All rights reserved.</p>
                 </div>
             </div>
         </footer>
-        
-        <script type="text/javascript">
-            function googleTranslateElementInit() {
-                new google.translate.TranslateElement({
-                pageLanguage: 'it',
-                includedLanguages: 'it,en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-                }, 'google_translate_element');
-            }
-
-        </script>
-        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     </body>
 </html>

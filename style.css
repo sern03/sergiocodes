@@ -17,9 +17,11 @@ body {
     top: 0px !important;
 }
 
-.goog-te-banner-frame.skiptranslate,
-.goog-te-gadget {
-  display: none !important;
+.ita, .eng {
+  transition: opacity 0.3s ease;
+}
+.eng{
+    display: none;
 }
 
 h1, h2, h3, h4, h5, h6 {

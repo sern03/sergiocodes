@@ -155,38 +155,22 @@ contactForm.addEventListener('submit', function (e) {
 });
 
 // Translate
+let currentLang = 'ita';
+
 function toggleLanguage() {
-  const select = document.querySelector('select.goog-te-combo');
-  if (!select) return;
-
-  const currentLang = select.value;
-  const newLang = currentLang === 'en' ? 'it' : 'en';
-  select.value = newLang;
-  select.dispatchEvent(new Event('change'));
-
-  updateLangButton(newLang);
-}
-
-function updateLangButton(lang) {
+  const itaElements = document.querySelectorAll('.ita');
+  const engElements = document.querySelectorAll('.eng');
   const langBtn = document.getElementById('langBtn');
-  if (!langBtn) return;
 
-  if (lang === 'en') {
+  if (currentLang === 'ita') {
+    itaElements.forEach(el => el.style.display = 'none');
+    engElements.forEach(el => el.style.display = 'block');
+    currentLang = 'eng';
     langBtn.textContent = 'IT / EN';
   } else {
+    itaElements.forEach(el => el.style.display = 'block');
+    engElements.forEach(el => el.style.display = 'none');
+    currentLang = 'ita';
     langBtn.textContent = 'EN / IT';
   }
 }
-
-// Inizializzazione dopo caricamento
-window.addEventListener('load', () => {
-  // Aspetta che il dropdown venga creato
-  const waitForTranslate = setInterval(() => {
-    const select = document.querySelector('select.goog-te-combo');
-    if (select) {
-      updateLangButton(select.value);
-      select.addEventListener('change', () => updateLangButton(select.value));
-      clearInterval(waitForTranslate);
-    }
-  }, 500);
-});
