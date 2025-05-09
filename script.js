@@ -156,11 +156,37 @@ contactForm.addEventListener('submit', function (e) {
 
 // Translate
 function toggleLanguage() {
-    const currentLang = document.documentElement.lang;
-    const newLang = currentLang === 'it' ? 'en' : 'it';
+  const select = document.querySelector('select.goog-te-combo');
+  if (!select) return;
+
+  const currentLang = select.value;
+  const newLang = currentLang === 'en' ? 'it' : 'en';
+  select.value = newLang;
+  select.dispatchEvent(new Event('change'));
+
+  updateLangButton(newLang);
+}
+
+function updateLangButton(lang) {
+  const langBtn = document.getElementById('langBtn');
+  if (!langBtn) return;
+
+  if (lang === 'en') {
+    langBtn.textContent = 'IT / EN';
+  } else {
+    langBtn.textContent = 'EN / IT';
+  }
+}
+
+// Inizializzazione dopo caricamento
+window.addEventListener('load', () => {
+  // Aspetta che il dropdown venga creato
+  const waitForTranslate = setInterval(() => {
     const select = document.querySelector('select.goog-te-combo');
     if (select) {
-    select.value = newLang;
-    select.dispatchEvent(new Event('change'));
+      updateLangButton(select.value);
+      select.addEventListener('change', () => updateLangButton(select.value));
+      clearInterval(waitForTranslate);
     }
-}
+  }, 500);
+});
