@@ -14,6 +14,12 @@ body {
     background-color: var(--darker);
     color: var(--light);
     overflow-x: hidden;
+    top: 0px !important;
+}
+
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget {
+  display: none !important;
 }
 
 h1, h2, h3, h4, h5, h6 {

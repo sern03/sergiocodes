@@ -12,6 +12,7 @@
         <script src="script.js" defer></script>
     </head>
     <body class="min-h-screen">
+        <div id="google_translate_element" style="display:none;"></div>
         <div class="animated-bg"></div>
         <div class="cursor-glow" style="left: 887px; top: 569px;"></div>
 
@@ -23,7 +24,14 @@
                     <h1 class="text-xl font-bold gradient-text">SN</h1>
                     <span class="code-bracket text-xl ml-1">/&gt;</span>
                 </div>
-                <div class="hidden md:flex space-x-6">
+                <div class="md:hidden flex items-center">
+                    <div class="hidden md:flex space-x-6">
+                        <div id="lang-toggle" class="ml-4">
+                            <button onclick="toggleLanguage()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition-all">
+                                EN / IT
+                            </button>
+                        </div>
+                    </div>
                     <a href="#about" class="nav-link text-gray-300 hover:text-white">Chi sono</a>
                     <a href="#skills" class="nav-link text-gray-300 hover:text-white">Competenze</a>
                     <a href="#projects" class="nav-link text-gray-300 hover:text-white">Progetti</a>
@@ -615,6 +623,18 @@
                 </div>
             </div>
         </footer>
+
+
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                pageLanguage: 'it',
+                includedLanguages: 'it,en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                }, 'google_translate_element');
+            }
+        </script>
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     </body>
 </html>

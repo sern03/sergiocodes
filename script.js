@@ -132,19 +132,35 @@ emailjs.init('6Wx9zhMWcV1oIcEuk');
 
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
+const loader = document.getElementById('loader');
 
 contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
+    loader.style.display = 'block';
+
     emailjs.sendForm('service_mznitas', 'template_yd5zchg', this)
       .then(() => {
         formSuccess.classList.remove('hidden');
+        loader.style.display = 'none';
         contactForm.reset();
         setTimeout(() => {
           formSuccess.classList.add('hidden');
         }, 5000);
       }, (error) => {
+        contactForm.reset();
         console.error('Errore invio:', error);
         alert('Errore durante l\'invio del messaggio.');
       });
-  });
+});
+
+// Translate
+function toggleLanguage() {
+    const currentLang = document.documentElement.lang;
+    const newLang = currentLang === 'it' ? 'en' : 'it';
+    const select = document.querySelector('select.goog-te-combo');
+    if (select) {
+    select.value = newLang;
+    select.dispatchEvent(new Event('change'));
+    }
+}
