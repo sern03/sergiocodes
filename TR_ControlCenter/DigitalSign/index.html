@@ -677,63 +677,13 @@
         var exportContext = exportCanvas.getContext("2d");
         var signatureWidth = canvas.width;
         var signatureHeight = canvas.height;
-        var padding = Math.round(signatureWidth * 0.055);
-        var availableTextWidth = signatureWidth - (padding * 2);
-        var lineHeight = Math.round(signatureWidth * 0.055);
-        var lines = [];
-
-        exportContext.font = "600 " + Math.round(signatureWidth * 0.05) + "px 'Trebuchet MS', 'Segoe UI', sans-serif";
-        exportContext.textBaseline = "top";
-
-        message.split("\n").forEach(function (line) {
-          var words = line.split(" ");
-          var currentLine = "";
-
-          words.forEach(function (word) {
-            var testLine = currentLine ? currentLine + " " + word : word;
-            if (exportContext.measureText(testLine).width > availableTextWidth && currentLine) {
-              lines.push(currentLine);
-              currentLine = word;
-            } else {
-              currentLine = testLine;
-            }
-          });
-
-          if (currentLine) {
-            lines.push(currentLine);
-          }
-        });
-
         exportCanvas.width = signatureWidth;
-        exportCanvas.height = (padding * 3) + (lineHeight * lines.length) + signatureHeight;
+        exportCanvas.height = signatureHeight;
 
         exportContext.fillStyle = "#ffffff";
         exportContext.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
 
-        exportContext.font = "600 " + Math.round(signatureWidth * 0.05) + "px 'Trebuchet MS', 'Segoe UI', sans-serif";
-        exportContext.textBaseline = "top";
-        exportContext.fillStyle = "#111111";
-
-        lines.forEach(function (line, index) {
-          exportContext.fillText(line, padding, padding + (index * lineHeight));
-        });
-
-        exportContext.strokeStyle = "#111111";
-        exportContext.lineWidth = Math.max(2, Math.round(signatureWidth * 0.004));
-        exportContext.strokeRect(
-          padding,
-          (padding * 2) + (lineHeight * lines.length),
-          signatureWidth - (padding * 2),
-          signatureHeight
-        );
-
-        exportContext.drawImage(
-          canvas,
-          padding,
-          (padding * 2) + (lineHeight * lines.length),
-          signatureWidth - (padding * 2),
-          signatureHeight
-        );
+        exportContext.drawImage(canvas, 0, 0, signatureWidth, signatureHeight);
 
         return exportCanvas.toDataURL("image/png");
       }
