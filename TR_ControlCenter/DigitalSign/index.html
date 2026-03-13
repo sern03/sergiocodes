@@ -15,6 +15,7 @@
       --shadow: 0 20px 50px rgba(21, 32, 45, 0.08);
       --radius: 28px;
       --font: "Trebuchet MS", "Gill Sans", "Segoe UI", sans-serif;
+      --signature-height: clamp(220px, 34vh, 320px);
     }
 
     * {
@@ -30,6 +31,8 @@
         linear-gradient(180deg, #f7f8f5 0%, var(--bg) 72%);
       color: var(--text);
       font-family: var(--font);
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     body {
@@ -213,7 +216,7 @@
 
     .signature-area {
       position: relative;
-      min-height: clamp(240px, 42vh, 380px);
+      height: var(--signature-height);
       border-radius: calc(var(--radius) - 8px);
       overflow: hidden;
       background: rgba(255, 255, 255, 0.28);
@@ -222,7 +225,7 @@
     canvas {
       display: block;
       width: 100%;
-      height: clamp(240px, 42vh, 380px);
+      height: 100%;
       touch-action: none;
       cursor: crosshair;
     }
@@ -356,30 +359,106 @@
     }
 
     @media (max-width: 640px) {
+      :root {
+        --signature-height: 240px;
+      }
+
       body {
-        padding: 14px 10px 20px;
+        padding: 10px 8px 18px;
       }
 
       .card {
         border-radius: 28px;
-        padding: 22px 14px 18px;
+        padding: 18px 12px 16px;
+      }
+
+      h1 {
+        margin-bottom: 18px;
+        font-size: 1.85rem;
+      }
+
+      .intro {
+        font-size: 1rem;
+        margin-bottom: 14px;
+      }
+
+      ol {
+        font-size: 0.98rem;
+        line-height: 1.42;
+      }
+
+      li + li {
+        margin-top: 10px;
       }
 
       .installer-panel {
-        padding: 16px 14px 14px;
+        margin-bottom: 20px;
+        padding: 14px 12px 12px;
+      }
+
+      .installer-panel h2 {
+        font-size: 1.15rem;
+      }
+
+      .installer-panel p,
+      .wall-option-text {
+        font-size: 0.95rem;
       }
 
       .wall-option {
-        padding-left: 46px;
+        padding: 12px 12px 12px 42px;
+      }
+
+      .wall-option-indicator {
+        left: 12px;
+        width: 20px;
+        height: 20px;
+      }
+
+      .terms-button {
+        font-size: 1rem;
       }
 
       .signature-wrap {
-        padding: 14px 12px 18px;
+        margin-top: 22px;
+        padding: 12px 10px 14px;
+      }
+
+      .signature-header {
+        margin-bottom: 8px;
+      }
+
+      .clear-button {
+        width: 34px;
+        height: 34px;
+        font-size: 1.05rem;
       }
 
       .signature-line {
-        right: 18px;
-        width: calc(100% - 42px);
+        right: 16px;
+        bottom: 18px;
+        width: calc(100% - 50px);
+      }
+
+      .signature-mark {
+        left: 10px;
+        bottom: 6px;
+        font-size: 1.55rem;
+      }
+
+      .signature-hint,
+      .note,
+      .status {
+        font-size: 0.9rem;
+      }
+
+      .note {
+        margin: 18px 0 20px;
+      }
+
+      .send-button {
+        min-height: 58px;
+        font-size: 1.28rem;
       }
     }
 
