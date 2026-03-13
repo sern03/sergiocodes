@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f5f2">
+  <title>Prova del lavoro svolto</title>
+  <style>
+    :root {
+      --bg: #f4f5f2;
+      --text: #1d2230;
+      --muted: #636a73;
+      --accent: #0f8a6a;
+      --accent-dark: #0a6d54;
+      --shadow: 0 20px 50px rgba(21, 32, 45, 0.08);
+      --radius: 28px;
+      --font: "Trebuchet MS", "Gill Sans", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at top right, rgba(15, 138, 106, 0.08), transparent 28%),
+        linear-gradient(180deg, #f7f8f5 0%, var(--bg) 72%);
+      color: var(--text);
+      font-family: var(--font);
+    }
+
+    body {
+      padding: 24px 18px 32px;
+    }
+
+    .shell {
+      width: min(100%, 780px);
+      margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(251, 251, 248, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      padding: 28px 18px 22px;
+    }
+
+    h1 {
+      margin: 0 0 28px;
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .installer-panel {
+      margin: 0 0 28px;
+      padding: 18px 18px 16px;
+      background:
+        radial-gradient(circle at top right, rgba(15, 138, 106, 0.12), transparent 35%),
+        rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(15, 138, 106, 0.16);
+      border-radius: 24px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+    }
+
+    .installer-panel h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .installer-panel p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.45;
+    }
+
+    .wall-options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .wall-option {
+      position: relative;
+      display: block;
+      padding: 14px 14px 14px 50px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(29, 34, 48, 0.08);
+      cursor: pointer;
+      transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .wall-option.is-selected {
+      background: rgba(15, 138, 106, 0.08);
+      border-color: rgba(15, 138, 106, 0.28);
+    }
+
+    .wall-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .wall-option-indicator {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      width: 22px;
+      height: 22px;
+      border: 2px solid rgba(15, 138, 106, 0.5);
+      border-radius: 50%;
+      transform: translateY(-50%);
+      background: #ffffff;
+      transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .wall-option-indicator::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      transform: scale(0);
+      transition: transform 180ms ease;
+    }
+
+    .wall-option.is-selected .wall-option-indicator {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 5px rgba(15, 138, 106, 0.1);
+    }
+
+    .wall-option.is-selected .wall-option-indicator::after {
+      transform: scale(1);
+    }
+
+    .wall-option-text {
+      color: #27303a;
+      font-size: clamp(0.98rem, 2vw, 1.08rem);
+      line-height: 1.4;
+    }
+
+    .intro {
+      margin: 0 0 18px;
+      font-size: clamp(1.1rem, 2.6vw, 1.55rem);
+      line-height: 1.35;
+    }
+
+    ol {
+      margin: 0;
+      padding-left: 1.5rem;
+      font-size: clamp(1rem, 2.2vw, 1.28rem);
+      line-height: 1.52;
+    }
+
+    li + li {
+      margin-top: 16px;
+    }
+
+    .terms-button {
+      appearance: none;
+      border: 0;
+      background: none;
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 6px;
+      font: inherit;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      padding: 0;
+      margin-top: 14px;
+      cursor: pointer;
+    }
+
+    .signature-wrap {
+      position: relative;
+      margin-top: 30px;
+      background: linear-gradient(180deg, rgba(240, 242, 237, 0.95), rgba(232, 235, 228, 0.98));
+      border: 2px solid rgba(150, 159, 146, 0.32);
+      border-radius: var(--radius);
+      padding: 18px 16px 22px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    }
+
+    .signature-header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .clear-button {
+      appearance: none;
+      border: 0;
+      background: rgba(255, 255, 255, 0.74);
+      color: var(--text);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(21, 32, 45, 0.1);
+    }
+
+    .signature-area {
+      position: relative;
+      min-height: clamp(240px, 42vh, 380px);
+      border-radius: calc(var(--radius) - 8px);
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: clamp(240px, 42vh, 380px);
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+    .signature-line {
+      position: absolute;
+      right: 28px;
+      bottom: 26px;
+      width: calc(100% - 64px);
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(24, 28, 32, 0.95);
+    }
+
+    .signature-mark {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      font-size: clamp(2rem, 4vw, 2.4rem);
+      line-height: 1;
+      color: rgba(24, 28, 32, 0.95);
+      pointer-events: none;
+    }
+
+    .signature-hint {
+      margin: 14px 0 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .note {
+      margin: 28px 0 26px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.35;
+    }
+
+    .send-button {
+      width: 100%;
+      min-height: 68px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), #109f78);
+      color: #f8fffb;
+      font: inherit;
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+      box-shadow: 0 16px 30px rgba(15, 138, 106, 0.28);
+    }
+
+    .send-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+      box-shadow: none;
+    }
+
+    .send-button:not(:disabled):hover,
+    .send-button:not(:disabled):focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 34px rgba(15, 138, 106, 0.32);
+    }
+
+    .status {
+      min-height: 1.5em;
+      margin: 14px 4px 0;
+      color: var(--accent-dark);
+      font-size: 0.96rem;
+      line-height: 1.4;
+    }
+
+    .status[data-state="error"] {
+      color: #9a3e1d;
+    }
+
+    .modal[hidden] {
+      display: none;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(18, 24, 31, 0.42);
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-card {
+      position: relative;
+      width: min(100%, 460px);
+      border-radius: 30px;
+      padding: 28px 22px 22px;
+      background:
+        radial-gradient(circle at top right, rgba(15, 138, 106, 0.14), transparent 34%),
+        #fafbf8;
+      box-shadow: 0 22px 60px rgba(21, 32, 45, 0.22);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      appearance: none;
+      border: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(15, 138, 106, 0.08);
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .modal h2 {
+      margin: 0 0 12px;
+      font-size: 1.45rem;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .modal p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 14px 10px 20px;
+      }
+
+      .card {
+        border-radius: 28px;
+        padding: 22px 14px 18px;
+      }
+
+      .installer-panel {
+        padding: 16px 14px 14px;
+      }
+
+      .wall-option {
+        padding-left: 46px;
+      }
+
+      .signature-wrap {
+        padding: 14px 12px 18px;
+      }
+
+      .signature-line {
+        right: 18px;
+        width: calc(100% - 42px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto;
+      }
+
+      .send-button,
+      .wall-option,
+      .wall-option-indicator,
+      .wall-option-indicator::after {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="card">
+      <h1>Prova del lavoro svolto</h1>
+
+      <section class="installer-panel" aria-labelledby="wallFixingTitle">
+        <h2 id="wallFixingTitle">Fissaggio a parete</h2>
+        <p>Selezione riservata al montatore.</p>
+
+        <div class="wall-options" role="radiogroup" aria-label="Stato fissaggio a parete">
+          <label class="wall-option">
+            <input type="radio" name="wallFixing" value="Nessun articolo richiedeva il fissaggio a parete.">
+            <span class="wall-option-indicator" aria-hidden="true"></span>
+            <span class="wall-option-text">Nessun articolo richiedeva il fissaggio a parete</span>
+          </label>
+
+          <label class="wall-option">
+            <input type="radio" name="wallFixing" value="Sono stati fissati a parete tutti gli articoli che lo richiedevano.">
+            <span class="wall-option-indicator" aria-hidden="true"></span>
+            <span class="wall-option-text">Sono stati fissati a parete tutti gli articoli che lo richiedevano</span>
+          </label>
+
+          <label class="wall-option">
+            <input type="radio" name="wallFixing" value="Il fissaggio a parete non era necessario.">
+            <span class="wall-option-indicator" aria-hidden="true"></span>
+            <span class="wall-option-text">Il fissaggio a parete non era necessario</span>
+          </label>
+        </div>
+      </section>
+
+      <p class="intro">Il cliente conferma che:</p>
+
+      <ol>
+        <li>La task e stata svolta nel modo corretto.</li>
+        <li>Il tasker non ha fissato gli articoli alla parete, come previsto dalle istruzioni di montaggio.</li>
+        <li>I termini del contratto sono stati compresi e accettati.</li>
+      </ol>
+
+      <button class="terms-button" type="button" id="openTerms">Termini del contratto</button>
+
+      <section class="signature-wrap" aria-labelledby="signatureTitle">
+        <div class="signature-header">
+          <button class="clear-button" type="button" id="clearSignature" aria-label="Cancella firma">X</button>
+        </div>
+
+        <div class="signature-area">
+          <h2 id="signatureTitle" style="position:absolute;left:-9999px;">Firma del cliente</h2>
+          <canvas id="signatureCanvas" aria-label="Area firma"></canvas>
+          <span class="signature-mark" aria-hidden="true">X</span>
+          <span class="signature-line" aria-hidden="true"></span>
+        </div>
+
+        <p class="signature-hint">Firma a mano libera all'interno del riquadro.</p>
+      </section>
+
+      <p class="note">Questa non costituisce ricevuta. Cliccando su Invia, il cliente conferma implicitamente di aver preso visione delle politiche di Taskrabbit.</p>
+
+      <button class="send-button" type="button" id="sendSignature" disabled>Invia</button>
+      <p class="status" id="statusMessage" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <div class="modal" id="termsModal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+      <button class="modal-close" type="button" id="closeTerms" aria-label="Chiudi finestra termini">X</button>
+      <h2 id="modalTitle">Termini del contratto</h2>
+      <p id="modalDescription">I termini contrattuali sono stati comunicati e condivisi con il cliente in fase di prenotazione dell'intervento di montaggio.</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var canvas = document.getElementById("signatureCanvas");
+      var clearButton = document.getElementById("clearSignature");
+      var sendButton = document.getElementById("sendSignature");
+      var statusMessage = document.getElementById("statusMessage");
+      var openTermsButton = document.getElementById("openTerms");
+      var closeTermsButton = document.getElementById("closeTerms");
+      var termsModal = document.getElementById("termsModal");
+      var wallFixingInputs = document.querySelectorAll('input[name="wallFixing"]');
+      var wallOptionLabels = document.querySelectorAll(".wall-option");
+      var context = canvas.getContext("2d");
+      var isDrawing = false;
+      var hasSignature = false;
+
+      function setStatus(message, state) {
+        statusMessage.textContent = message || "";
+        statusMessage.dataset.state = state || "";
+      }
+
+      function getSelectedWallFixing() {
+        var selectedInput = document.querySelector('input[name="wallFixing"]:checked');
+        return selectedInput ? selectedInput.value : "";
+      }
+
+      function updateSendState() {
+        sendButton.disabled = !(hasSignature && getSelectedWallFixing());
+      }
+
+      function updateWallOptionStyles() {
+        var index;
+        for (index = 0; index < wallOptionLabels.length; index += 1) {
+          wallOptionLabels[index].classList.remove("is-selected");
+          if (wallOptionLabels[index].querySelector("input").checked) {
+            wallOptionLabels[index].classList.add("is-selected");
+          }
+        }
+      }
+
+      function updateCanvasSize() {
+        var ratio = Math.max(window.devicePixelRatio || 1, 1);
+        var rect = canvas.getBoundingClientRect();
+        var imageData = hasSignature ? canvas.toDataURL("image/png") : null;
+
+        canvas.width = Math.floor(rect.width * ratio);
+        canvas.height = Math.floor(rect.height * ratio);
+
+        context = canvas.getContext("2d");
+        context.scale(ratio, ratio);
+        context.lineCap = "round";
+        context.lineJoin = "round";
+        context.strokeStyle = "#101820";
+        context.lineWidth = 2.6;
+
+        if (imageData) {
+          var image = new Image();
+          image.onload = function () {
+            context.drawImage(image, 0, 0, rect.width, rect.height);
+          };
+          image.src = imageData;
+        }
+      }
+
+      function getPoint(event) {
+        var rect = canvas.getBoundingClientRect();
+        var source = event.touches ? event.touches[0] : event;
+        return {
+          x: source.clientX - rect.left,
+          y: source.clientY - rect.top
+        };
+      }
+
+      function beginStroke(event) {
+        event.preventDefault();
+        isDrawing = true;
+        var point = getPoint(event);
+        context.beginPath();
+        context.moveTo(point.x, point.y);
+        setStatus("");
+      }
+
+      function drawStroke(event) {
+        if (!isDrawing) {
+          return;
+        }
+
+        event.preventDefault();
+        var point = getPoint(event);
+        context.lineTo(point.x, point.y);
+        context.stroke();
+        hasSignature = true;
+        updateSendState();
+      }
+
+      function endStroke() {
+        isDrawing = false;
+      }
+
+      function clearSignature() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        hasSignature = false;
+        updateSendState();
+        setStatus("");
+      }
+
+      function dataUrlToFile(dataUrl, filename) {
+        var parts = dataUrl.split(",");
+        var mimeMatch = parts[0].match(/:(.*?);/);
+        var mime = mimeMatch ? mimeMatch[1] : "image/png";
+        var binary = atob(parts[1]);
+        var length = binary.length;
+        var bytes = new Uint8Array(length);
+        var index;
+
+        for (index = 0; index < length; index += 1) {
+          bytes[index] = binary.charCodeAt(index);
+        }
+
+        return new File([bytes], filename, { type: mime });
+      }
+
+      async function shareSignature() {
+        if (!hasSignature) {
+          setStatus("Inserisci una firma prima di inviare.", "error");
+          return;
+        }
+
+        var wallFixingSelection = getSelectedWallFixing();
+        if (!wallFixingSelection) {
+          setStatus("Seleziona prima un'opzione nel riquadro Fissaggio a parete.", "error");
+          return;
+        }
+
+        setStatus("Preparazione della firma in corso...");
+        var dataUrl = canvas.toDataURL("image/png");
+        var file = dataUrlToFile(dataUrl, "firma-cliente.png");
+        var shareText = "Invio della firma del cliente. " + wallFixingSelection;
+
+        try {
+          if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({
+              title: "Firma cliente",
+              text: shareText,
+              files: [file]
+            });
+            setStatus("Finestra di condivisione aperta. Seleziona WhatsApp per completare l'invio.");
+            return;
+          }
+
+          if (navigator.share) {
+            await navigator.share({
+              title: "Firma cliente",
+              text: shareText + " Il browser non supporta l'invio diretto dell'immagine. WhatsApp si aprira con un messaggio; la firma verra scaricata per l'allegato manuale."
+            });
+          }
+        } catch (error) {
+          if (error && error.name === "AbortError") {
+            setStatus("Condivisione annullata.");
+            return;
+          }
+        }
+
+        var link = document.createElement("a");
+        link.href = dataUrl;
+        link.download = file.name;
+        link.click();
+
+        window.open(
+          "https://wa.me/?text=" + encodeURIComponent(shareText),
+          "_blank",
+          "noopener"
+        );
+        setStatus("Il browser non consente l'invio diretto del file a WhatsApp. Ho scaricato la firma e aperto WhatsApp con il messaggio pronto.");
+      }
+
+      function openModal() {
+        termsModal.hidden = false;
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        termsModal.hidden = true;
+        document.body.style.overflow = "";
+      }
+
+      if (window.PointerEvent) {
+        canvas.addEventListener("pointerdown", beginStroke);
+        canvas.addEventListener("pointermove", drawStroke);
+        window.addEventListener("pointerup", endStroke);
+        canvas.addEventListener("pointerleave", endStroke);
+      } else {
+        canvas.addEventListener("mousedown", beginStroke);
+        canvas.addEventListener("mousemove", drawStroke);
+        window.addEventListener("mouseup", endStroke);
+        canvas.addEventListener("touchstart", beginStroke, { passive: false });
+        canvas.addEventListener("touchmove", drawStroke, { passive: false });
+        canvas.addEventListener("touchend", endStroke);
+      }
+
+      clearButton.addEventListener("click", clearSignature);
+      sendButton.addEventListener("click", shareSignature);
+      openTermsButton.addEventListener("click", openModal);
+      closeTermsButton.addEventListener("click", closeModal);
+
+      wallFixingInputs.forEach(function (input) {
+        input.addEventListener("change", function () {
+          updateWallOptionStyles();
+          updateSendState();
+          setStatus("");
+        });
+      });
+
+      termsModal.addEventListener("click", function (event) {
+        if (event.target === termsModal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !termsModal.hidden) {
+          closeModal();
+        }
+      });
+
+      window.addEventListener("resize", updateCanvasSize);
+      updateCanvasSize();
+      updateWallOptionStyles();
+      updateSendState();
+    }());
+  </script>
+</body>
+</html>
