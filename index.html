@@ -1,332 +1,1563 @@
+<!DOCTYPE html>
 <html lang="it">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sergio Nicoletti | Full-Stack Developer Portfolio</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-        <script data-goatcounter="https://sergiocodes.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-        <link rel="icon" href="icon.png" type="image/png">
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
-    </head>
-    <body class="min-h-screen">
-        <div class="animated-bg"></div>
-        <div class="cursor-glow" style="left: 887px; top: 569px;"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sergio Nicoletti | Full-Stack Developer Portfolio</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #05070d;
+            --bg-2: #080f1d;
+            --surface: rgba(18, 24, 38, 0.76);
+            --surface-strong: rgba(25, 32, 48, 0.94);
+            --line: rgba(137, 163, 255, 0.16);
+            --line-strong: rgba(107, 214, 255, 0.34);
+            --text: #f2f7ff;
+            --muted: #a9b5ca;
+            --soft: #d5deee;
+            --cyan: #34d8ff;
+            --blue: #4d7cff;
+            --violet: #9a6cff;
+            --green: #5df3b5;
+            --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+            --radius: 8px;
+            --max: 1180px;
+        }
 
-        <!-- Translation Button -->
-        <div class="translate-btn-container">
-            <button class="translate-btn" id="translateBtn" onclick="toggleLanguage()" aria-label="Traduci">
-                <img src="https://flagcdn.com/w40/us.png" class="w-6 h-4 inline ita">
-                <img src="https://flagcdn.com/w40/it.png" class="w-6 h-4 inline eng" style="display: none;">
-            </button>
-        </div>
-        
-        <!-- Navigation -->
-        <nav class="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-indigo-500/20">
-            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-                <div class="flex items-center">
-                    <span class="code-bracket text-xl mr-1">&lt;</span>
-                    <h1 class="text-xl font-bold gradient-text">SN</h1>
-                    <span class="code-bracket text-xl ml-1">/&gt;</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-6">
-                    <a href="#about" class="nav-link text-gray-300 hover:text-white ita">Chi sono</a>
-                    <a href="#about" class="nav-link text-gray-300 hover:text-white eng">About Me</a>
+        * {
+            box-sizing: border-box;
+        }
 
-                    <a href="#skills" class="nav-link text-gray-300 hover:text-white ita">Competenze</a>
-                    <a href="#skills" class="nav-link text-gray-300 hover:text-white eng">Skills</a>
+        html {
+            scroll-behavior: smooth;
+        }
 
-                    <a href="#projects" class="nav-link text-gray-300 hover:text-white ita">Progetti</a>
-                    <a href="#projects" class="nav-link text-gray-300 hover:text-white eng">Projects</a>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 18% 12%, rgba(77, 124, 255, 0.18), transparent 28rem),
+                radial-gradient(circle at 86% 24%, rgba(52, 216, 255, 0.12), transparent 28rem),
+                radial-gradient(circle at 72% 84%, rgba(154, 108, 255, 0.12), transparent 26rem),
+                linear-gradient(135deg, var(--bg), var(--bg-2) 46%, #050711);
+            color: var(--text);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-                    <a href="#education" class="nav-link text-gray-300 hover:text-white ita">Formazione</a>
-                    <a href="#education" class="nav-link text-gray-300 hover:text-white eng">Education</a>
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(120, 180, 255, 0.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(120, 180, 255, 0.055) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.14));
+        }
 
-                    <a href="#contact" class="nav-link text-gray-300 hover:text-white ita">Contatti</a>
-                    <a href="#contact" class="nav-link text-gray-300 hover:text-white eng">Contact</a>
-                </div>
-                <button class="mobile-menu-toggle md:hidden text-white focus:outline-none" id="mobile-menu-button" type="button" aria-label="Apri menu di navigazione" aria-controls="mobile-menu" aria-expanded="false">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path id="mobile-menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"></path>
-                    </svg>
-                </button>
+        body::after {
+            content: "";
+            position: fixed;
+            inset: -20%;
+            z-index: -1;
+            background:
+                linear-gradient(115deg, transparent 0 32%, rgba(52, 216, 255, 0.05) 42%, transparent 54%),
+                linear-gradient(245deg, transparent 0 30%, rgba(154, 108, 255, 0.045) 48%, transparent 62%);
+            animation: drift 18s ease-in-out infinite alternate;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        .eng,
+        body:not([data-lang="en"]) .eng {
+            display: none !important;
+        }
+
+        body[data-lang="en"] .ita {
+            display: none !important;
+        }
+
+        body[data-lang="en"] .eng {
+            display: inline !important;
+        }
+
+        body[data-lang="en"] p.eng,
+        body[data-lang="en"] div.eng,
+        body[data-lang="en"] h2.eng,
+        body[data-lang="en"] h3.eng,
+        body[data-lang="en"] h4.eng,
+        body[data-lang="en"] label.eng {
+            display: block !important;
+        }
+
+        body[data-lang="en"] a.eng,
+        body[data-lang="en"] button.eng,
+        body[data-lang="en"] .pill.eng {
+            display: inline-flex !important;
+        }
+
+        .container {
+            width: min(var(--max), calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid rgba(137, 163, 255, 0.14);
+            background: rgba(5, 7, 13, 0.68);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            letter-spacing: 0;
+        }
+
+        .brand-mark {
+            color: var(--cyan);
+            text-shadow: 0 0 24px rgba(52, 216, 255, 0.45);
+        }
+
+        .brand-name {
+            background: linear-gradient(135deg, #fff, var(--cyan) 48%, var(--violet));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-link,
+        .language-toggle,
+        .menu-toggle {
+            border: 1px solid transparent;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
+        }
+
+        .nav-link {
+            padding: 9px 12px;
+            font-size: 0.92rem;
+        }
+
+        .nav-link:hover,
+        .language-toggle:hover,
+        .menu-toggle:hover {
+            color: var(--text);
+            border-color: rgba(52, 216, 255, 0.26);
+            background: rgba(52, 216, 255, 0.08);
+        }
+
+        .language-toggle {
+            padding: 9px 13px;
+            font-weight: 700;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle span,
+        .menu-toggle::before,
+        .menu-toggle::after {
+            content: "";
+            display: block;
+            width: 18px;
+            height: 2px;
+            border-radius: 99px;
+            background: currentColor;
+            transition: transform 180ms ease, opacity 180ms ease;
+        }
+
+        .menu-toggle {
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu-open .menu-toggle span {
+            opacity: 0;
+        }
+
+        .menu-open .menu-toggle::before {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-open .menu-toggle::after {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .hero {
+            min-height: calc(100vh - 72px);
+            display: grid;
+            align-items: center;
+            padding: 86px 0 72px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
+            gap: clamp(32px, 6vw, 78px);
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 18px;
+            color: var(--cyan);
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 42px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--cyan), transparent);
+        }
+
+        .hero h1 {
+            margin: 0;
+            max-width: 820px;
+            font-size: clamp(3.2rem, 8vw, 6.8rem);
+            line-height: 0.92;
+            letter-spacing: 0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 8%, #ccecff 34%, var(--cyan) 58%, var(--violet));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-copy {
+            margin: 28px 0 0;
+            max-width: 640px;
+            color: var(--soft);
+            font-size: clamp(1.08rem, 2vw, 1.36rem);
+        }
+
+        .cta-row,
+        .social-row,
+        .pill-row,
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .cta-row {
+            margin-top: 34px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 18px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text);
+            font-weight: 800;
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--blue), #22c7f6);
+            box-shadow: 0 16px 42px rgba(52, 216, 255, 0.22);
+        }
+
+        .btn.secondary {
+            background: rgba(255, 255, 255, 0.035);
+            border-color: rgba(52, 216, 255, 0.32);
+        }
+
+        .btn:hover,
+        .card:hover,
+        .project-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn.primary:hover {
+            box-shadow: 0 18px 56px rgba(52, 216, 255, 0.34);
+        }
+
+        .social-row {
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 44px;
+            padding: 10px 14px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(137, 163, 255, 0.18);
+            background: rgba(255, 255, 255, 0.035);
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 900;
+            transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            background: rgba(52, 216, 255, 0.1);
+            color: var(--cyan);
+            font-size: 0.72rem;
+            line-height: 1;
+        }
+
+        .social-text {
+            color: var(--soft);
+            white-space: nowrap;
+        }
+
+        .social-link:hover {
+            color: var(--text);
+            border-color: rgba(52, 216, 255, 0.44);
+            background: rgba(52, 216, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .console-wrap {
+            position: relative;
+        }
+
+        .console-wrap::before {
+            content: "";
+            position: absolute;
+            inset: -22px;
+            z-index: -1;
+            border-radius: 28px;
+            background: radial-gradient(circle, rgba(52, 216, 255, 0.22), transparent 64%);
+            filter: blur(18px);
+        }
+
+        .console {
+            overflow: hidden;
+            border: 1px solid rgba(52, 216, 255, 0.28);
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(14, 22, 38, 0.98), rgba(8, 12, 24, 0.96));
+            box-shadow: var(--shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+        }
+
+        .console-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 15px 16px;
+            border-bottom: 1px solid rgba(137, 163, 255, 0.16);
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .window-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: var(--blue);
+            box-shadow: 0 0 16px currentColor;
+        }
+
+        .window-dots span:nth-child(2) {
+            background: var(--cyan);
+        }
+
+        .window-dots span:nth-child(3) {
+            background: var(--violet);
+        }
+
+        .console-title {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .console-body {
+            position: relative;
+            padding: 22px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            font-size: clamp(0.78rem, 1.5vw, 0.95rem);
+        }
+
+        .console-body::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, transparent, rgba(52, 216, 255, 0.07), transparent);
+            animation: scan 4.8s linear infinite;
+        }
+
+        .code-line {
+            display: grid;
+            grid-template-columns: 38px minmax(0, 1fr);
+            gap: 16px;
+            padding: 6px 0;
+            color: #dce7ff;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: codeIn 500ms ease forwards;
+        }
+
+        .code-line:nth-child(2) { animation-delay: 120ms; }
+        .code-line:nth-child(3) { animation-delay: 240ms; }
+        .code-line:nth-child(4) { animation-delay: 360ms; }
+        .code-line:nth-child(5) { animation-delay: 480ms; }
+        .code-line:nth-child(6) { animation-delay: 600ms; }
+        .code-line:nth-child(7) { animation-delay: 720ms; }
+        .code-line:nth-child(8) { animation-delay: 840ms; }
+        .code-line:nth-child(9) { animation-delay: 960ms; }
+
+        .ln {
+            color: rgba(169, 181, 202, 0.42);
+            text-align: right;
+            user-select: none;
+        }
+
+        .token-key { color: var(--cyan); }
+        .token-value { color: #f7fbff; }
+        .token-accent { color: var(--green); }
+        .token-violet { color: #c8b6ff; }
+        .cursor {
+            display: inline-block;
+            width: 9px;
+            height: 1.1em;
+            margin-left: 4px;
+            background: var(--cyan);
+            vertical-align: text-bottom;
+            animation: blink 1s steps(2, start) infinite;
+        }
+
+        .metric-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            border-top: 1px solid rgba(137, 163, 255, 0.16);
+            background: rgba(137, 163, 255, 0.12);
+        }
+
+        .metric {
+            padding: 16px;
+            background: rgba(7, 12, 24, 0.86);
+        }
+
+        .metric strong {
+            display: block;
+            color: var(--text);
+            font-size: 1.15rem;
+        }
+
+        .metric span {
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
+        .showcase-wrap {
+            position: relative;
+        }
+
+        .showcase-wrap::before {
+            content: "";
+            position: absolute;
+            inset: -32px -22px;
+            z-index: -1;
+            border-radius: 30px;
+            background:
+                radial-gradient(circle at 24% 18%, rgba(52, 216, 255, 0.24), transparent 36%),
+                radial-gradient(circle at 80% 72%, rgba(154, 108, 255, 0.18), transparent 42%);
+            filter: blur(18px);
+        }
+
+        .showcase-panel {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(52, 216, 255, 0.24);
+            border-radius: 22px;
+            background:
+                linear-gradient(145deg, rgba(24, 33, 52, 0.92), rgba(8, 13, 25, 0.92)),
+                rgba(255, 255, 255, 0.035);
+            box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .showcase-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(120deg, rgba(255, 255, 255, 0.1), transparent 28%),
+                radial-gradient(circle at 72% 12%, rgba(52, 216, 255, 0.13), transparent 26%);
+        }
+
+        .showcase-top {
+            position: relative;
+            display: grid;
+            grid-template-columns: 132px minmax(0, 1fr);
+            gap: 22px;
+            align-items: center;
+            padding: 28px;
+        }
+
+        .showcase-photo {
+            width: 132px;
+            aspect-ratio: 1;
+            border-radius: 18px;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--cyan), rgba(154, 108, 255, 0.72));
+            box-shadow: 0 18px 44px rgba(52, 216, 255, 0.16);
+        }
+
+        .showcase-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+
+        .panel-kicker {
+            display: inline-flex;
+            margin-bottom: 8px;
+            color: var(--cyan);
+            font-size: 0.78rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .showcase-top h3 {
+            margin: 0 0 10px;
+            font-size: clamp(1.55rem, 3vw, 2.25rem);
+            line-height: 1.08;
+        }
+
+        .showcase-top p {
+            margin-bottom: 0;
+            color: var(--muted);
+        }
+
+        .focus-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(137, 163, 255, 0.12);
+            border-top: 1px solid rgba(137, 163, 255, 0.14);
+            border-bottom: 1px solid rgba(137, 163, 255, 0.14);
+        }
+
+        .focus-item {
+            min-height: 122px;
+            padding: 18px;
+            background: rgba(7, 12, 24, 0.68);
+        }
+
+        .focus-item span:first-child {
+            display: inline-flex;
+            margin-bottom: 18px;
+            color: rgba(52, 216, 255, 0.64);
+            font-size: 0.78rem;
+            font-weight: 900;
+        }
+
+        .focus-item strong {
+            display: block;
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.25;
+        }
+
+        .showcase-bottom {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 18px;
+            align-items: center;
+            padding: 22px 28px 28px;
+        }
+
+        .showcase-strip {
+            display: grid;
+            gap: 4px;
+        }
+
+        .showcase-strip strong {
+            color: var(--text);
+        }
+
+        .showcase-strip span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px 12px;
+            border: 1px solid rgba(93, 243, 181, 0.24);
+            border-radius: 999px;
+            background: rgba(93, 243, 181, 0.08);
+            color: #b7ffe1;
+            font-size: 0.88rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .availability::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 16px rgba(93, 243, 181, 0.7);
+        }
+
+        section {
+            padding: 88px 0;
+            position: relative;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 24px;
+            margin-bottom: 34px;
+        }
+
+        .section-kicker {
+            color: var(--cyan);
+            font-size: 0.78rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            margin: 5px 0 0;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        h3,
+        h4,
+        p {
+            margin-top: 0;
+        }
+
+        .card,
+        .project-card {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: linear-gradient(180deg, rgba(22, 29, 46, 0.82), rgba(13, 18, 31, 0.76));
+            box-shadow: 0 18px 56px rgba(0, 0, 0, 0.24);
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+        }
+
+        .card:hover,
+        .project-card:hover {
+            border-color: rgba(52, 216, 255, 0.34);
+            box-shadow: 0 20px 72px rgba(0, 0, 0, 0.32);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 330px minmax(0, 1fr);
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .profile-card,
+        .content-card,
+        .skill-card,
+        .contact-card,
+        .education-card {
+            padding: clamp(22px, 3vw, 32px);
+        }
+
+        .portrait {
+            position: relative;
+            width: min(235px, 72vw);
+            aspect-ratio: 1;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--cyan), rgba(154, 108, 255, 0.65), rgba(77, 124, 255, 0.2));
+            box-shadow: 0 18px 48px rgba(52, 216, 255, 0.14);
+        }
+
+        .portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .location-badge {
+            display: inline-flex;
+            margin: 0 auto 18px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(52, 216, 255, 0.3);
+            background: rgba(52, 216, 255, 0.09);
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .profile-card {
+            text-align: center;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .contact-mini {
+            display: grid;
+            gap: 8px;
+            margin-top: 18px;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-mini a,
+        .contact-link {
+            color: var(--soft);
+            transition: color 180ms ease;
+        }
+
+        .contact-mini a:hover,
+        .contact-link:hover {
+            color: var(--cyan);
+        }
+
+        .pill,
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            min-height: 32px;
+            padding: 6px 11px;
+            border: 1px solid rgba(137, 163, 255, 0.18);
+            border-radius: 999px;
+            background: rgba(52, 216, 255, 0.07);
+            color: #dce8ff;
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .tag {
+            min-height: 28px;
+            border-radius: 6px;
+            color: #bdeeff;
+            font-size: 0.78rem;
+            background: rgba(77, 124, 255, 0.16);
+        }
+
+        .skills-grid,
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .skill-block + .skill-block {
+            margin-top: 28px;
+        }
+
+        .stack-showcase {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            align-content: center;
+            min-height: 100%;
+            background:
+                linear-gradient(180deg, rgba(22, 29, 46, 0.9), rgba(9, 14, 27, 0.82)),
+                rgba(255, 255, 255, 0.02);
+        }
+
+        .stack-showcase::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(52, 216, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 216, 255, 0.045) 1px, transparent 1px);
+            background-size: 26px 26px;
+            opacity: 0.55;
+            mask-image: linear-gradient(135deg, rgba(0, 0, 0, 0.95), transparent 72%);
+        }
+
+        .stack-showcase::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(110deg, transparent 0 32%, rgba(52, 216, 255, 0.08) 45%, transparent 58%);
+            transform: translateX(-64%);
+            animation: stackSweep 8s ease-in-out infinite;
+        }
+
+        .stack-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            align-content: center;
+        }
+
+        .stack-grid .skill-block + .skill-block {
+            margin-top: 0;
+        }
+
+        .stack-tile {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            min-height: 0;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 16px;
+            border: 1px solid rgba(137, 163, 255, 0.18);
+            border-radius: var(--radius);
+            background:
+                linear-gradient(145deg, rgba(52, 216, 255, 0.09), rgba(154, 108, 255, 0.055)),
+                rgba(8, 13, 25, 0.74);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+            text-align: center;
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .stack-tile:hover {
+            transform: translateY(-3px);
+            border-color: rgba(52, 216, 255, 0.36);
+            background:
+                linear-gradient(145deg, rgba(52, 216, 255, 0.13), rgba(154, 108, 255, 0.075)),
+                rgba(10, 17, 31, 0.86);
+        }
+
+        .stack-tile::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--blue), var(--violet), transparent);
+        }
+
+        .stack-tile::after {
+            content: "";
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            border: 1px solid rgba(52, 216, 255, 0.18);
+            border-radius: 8px;
+            background:
+                linear-gradient(90deg, transparent 46%, rgba(52, 216, 255, 0.16) 46% 54%, transparent 54%),
+                linear-gradient(transparent 46%, rgba(52, 216, 255, 0.16) 46% 54%, transparent 54%);
+            opacity: 0.72;
+        }
+
+        .stack-tile-wide {
+            grid-column: 1 / -1;
+            justify-self: center;
+            width: min(100%, 430px);
+        }
+
+        .stack-tile:nth-child(2) {
+            grid-column: 1 / 3;
+        }
+
+        .stack-tile:nth-child(3) {
+            grid-column: 3 / 5;
+        }
+
+        .stack-tile h3 {
+            max-width: none;
+            margin-bottom: 12px;
+            font-size: 1.08rem;
+            line-height: 1.2;
+        }
+
+        .stack-tile .pill-row {
+            gap: 9px;
+            justify-content: center;
+        }
+
+        .stack-tile .pill {
+            min-height: 32px;
+            padding: 7px 11px;
+            border-color: rgba(52, 216, 255, 0.28);
+            border-radius: 7px;
+            background: rgba(52, 216, 255, 0.12);
+            color: #edfaff;
+            font-weight: 800;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+        }
+
+        .list {
+            display: grid;
+            gap: 14px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            color: var(--soft);
+        }
+
+        .list li {
+            display: grid;
+            grid-template-columns: 22px minmax(0, 1fr);
+            gap: 10px;
+        }
+
+        .check {
+            width: 19px;
+            height: 19px;
+            margin-top: 3px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            box-shadow: 0 0 18px rgba(52, 216, 255, 0.24);
+        }
+
+        .check::after {
+            content: "";
+            display: block;
+            width: 8px;
+            height: 4px;
+            margin: 6px 0 0 5px;
+            border-left: 2px solid #05111f;
+            border-bottom: 2px solid #05111f;
+            transform: rotate(-45deg);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .project-card {
+            display: flex;
+            min-height: 100%;
+            flex-direction: column;
+            padding: 22px;
+        }
+
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(52, 216, 255, 0.28);
+            border-radius: var(--radius);
+            background:
+                linear-gradient(135deg, rgba(52, 216, 255, 0.15), rgba(154, 108, 255, 0.11)),
+                rgba(255, 255, 255, 0.025);
+            color: var(--cyan);
+            font-family: Consolas, monospace;
+            font-weight: 900;
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.25;
+        }
+
+        .project-card p {
+            color: var(--soft);
+            flex: 1;
+        }
+
+        .project-note {
+            max-width: 860px;
+            margin: 28px auto 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 20px;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .education-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(var(--cyan), var(--violet));
+        }
+
+        .education-head {
+            display: grid;
+            grid-template-columns: 52px minmax(0, 1fr);
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .edu-icon,
+        .contact-icon {
+            width: 52px;
+            height: 52px;
+            border: 1px solid rgba(52, 216, 255, 0.28);
+            border-radius: var(--radius);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(52, 216, 255, 0.08);
+            color: var(--cyan);
+            font-weight: 900;
+        }
+
+        .education-body {
+            margin-left: 68px;
+        }
+
+        .form {
+            display: grid;
+            gap: 14px;
+        }
+
+        .field {
+            display: grid;
+            gap: 7px;
+        }
+
+        label {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border: 1px solid rgba(137, 163, 255, 0.18);
+            border-radius: var(--radius);
+            background: rgba(6, 11, 22, 0.78);
+            color: var(--text);
+            padding: 12px 13px;
+            outline: none;
+            transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: rgba(52, 216, 255, 0.58);
+            box-shadow: 0 0 0 4px rgba(52, 216, 255, 0.1);
+            background: rgba(8, 15, 28, 0.94);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 132px;
+        }
+
+        .form-status {
+            display: none;
+            margin-top: 14px;
+            padding: 12px;
+            border: 1px solid rgba(93, 243, 181, 0.28);
+            border-radius: var(--radius);
+            background: rgba(93, 243, 181, 0.08);
+            color: #9fffd5;
+        }
+
+        .form-status.visible {
+            display: block;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 18px;
+        }
+
+        .contact-item {
+            display: grid;
+            grid-template-columns: 52px minmax(0, 1fr);
+            gap: 14px;
+            align-items: center;
+        }
+
+        .footer {
+            border-top: 1px solid rgba(137, 163, 255, 0.14);
+            background: rgba(5, 7, 13, 0.72);
+            padding: 36px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .copyright {
+            margin: 22px 0 0;
+            color: #7f8ca4;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 700ms ease, transform 700ms ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes drift {
+            from { transform: translate3d(-1.5%, -1%, 0); }
+            to { transform: translate3d(1.5%, 1%, 0); }
+        }
+
+        @keyframes scan {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(100%); }
+        }
+
+        @keyframes codeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        @keyframes stackSweep {
+            0%, 35% { transform: translateX(-68%); opacity: 0; }
+            48% { opacity: 1; }
+            70%, 100% { transform: translateX(68%); opacity: 0; }
+        }
+
+        @media (max-width: 980px) {
+            .hero-grid,
+            .about-grid,
+            .skills-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .console-wrap,
+            .showcase-wrap {
+                max-width: 680px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .container {
+                width: min(100% - 28px, var(--max));
+            }
+
+            .nav-links {
+                position: fixed;
+                inset: 72px 14px auto;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 12px;
+                border: 1px solid rgba(52, 216, 255, 0.22);
+                border-radius: var(--radius);
+                background: rgba(8, 13, 25, 0.98);
+                box-shadow: var(--shadow);
+            }
+
+            .menu-open .nav-links {
+                display: flex;
+            }
+
+            .nav-link {
+                width: 100%;
+                border-radius: var(--radius);
+            }
+
+            .menu-toggle {
+                display: inline-flex;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 54px;
+            }
+
+            .hero-grid {
+                gap: 34px;
+            }
+
+            .hero h1 {
+                font-size: clamp(3rem, 18vw, 5.2rem);
+            }
+
+            .section-heading {
+                display: block;
+            }
+
+            section {
+                padding: 64px 0;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metric-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .showcase-top,
+            .showcase-bottom {
+                grid-template-columns: 1fr;
+            }
+
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stack-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stack-tile-wide {
+                width: 100%;
+                grid-column: auto;
+            }
+
+            .stack-tile:nth-child(2),
+            .stack-tile:nth-child(3) {
+                grid-column: auto;
+            }
+
+            .showcase-photo {
+                width: 118px;
+            }
+
+            .education-body {
+                margin-left: 0;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.001ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body data-lang="it">
+    <header class="site-header" id="top">
+        <nav class="nav container" aria-label="Navigazione principale">
+            <a class="brand" href="#top" aria-label="Sergio Nicoletti">
+                <span class="brand-mark">&lt;</span>
+                <span class="brand-name">SN</span>
+                <span class="brand-mark">/&gt;</span>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#about" class="nav-link"><span class="ita">Chi sono</span><span class="eng">About Me</span></a>
+                <a href="#skills" class="nav-link"><span class="ita">Competenze</span><span class="eng">Skills</span></a>
+                <a href="#projects" class="nav-link"><span class="ita">Progetti</span><span class="eng">Projects</span></a>
+                <a href="#education" class="nav-link"><span class="ita">Formazione</span><span class="eng">Education</span></a>
+                <a href="#contact" class="nav-link"><span class="ita">Contatti</span><span class="eng">Contact</span></a>
             </div>
-            <div class="md:hidden hidden" id="mobile-menu">
-                <div class="mobile-menu-panel">
-                    <div class="mobile-menu-links">
-                        <a href="#about" class="nav-link mobile-nav-link text-gray-300 hover:text-white ita">Chi sono</a>
-                        <a href="#about" class="nav-link mobile-nav-link text-gray-300 hover:text-white eng">About Me</a>
 
-                        <a href="#skills" class="nav-link mobile-nav-link text-gray-300 hover:text-white ita">Competenze</a>
-                        <a href="#skills" class="nav-link mobile-nav-link text-gray-300 hover:text-white eng">Skills</a>
-
-                        <a href="#projects" class="nav-link mobile-nav-link text-gray-300 hover:text-white ita">Progetti</a>
-                        <a href="#projects" class="nav-link mobile-nav-link text-gray-300 hover:text-white eng">Projects</a>
-
-                        <a href="#education" class="nav-link mobile-nav-link text-gray-300 hover:text-white ita">Formazione</a>
-                        <a href="#education" class="nav-link mobile-nav-link text-gray-300 hover:text-white eng">Education</a>
-
-                        <a href="#contact" class="nav-link mobile-nav-link text-gray-300 hover:text-white ita">Contatti</a>
-                        <a href="#contact" class="nav-link mobile-nav-link text-gray-300 hover:text-white eng">Contact</a>
-                    </div>
-                </div>
-            </div>
+            <button class="language-toggle" id="translateBtn" type="button" aria-label="Traduci">EN</button>
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Apri menu di navigazione" aria-expanded="false" aria-controls="navLinks"><span></span></button>
         </nav>
+    </header>
 
-        <!-- Hero Section -->
-        <header class="relative min-h-screen flex items-center justify-center px-4 py-20">
-            <div class="container mx-auto text-center z-10">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                    <span class="gradient-text">Sergio Nicoletti</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto ita">
-                    Sviluppatore full-stack che realizza applicazioni web, strumenti software e soluzioni di automazione con integrazione AI
-                </p>
-                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto eng">
-                    Full-stack developer building web applications, software tools, and automation solutions enhanced by AI integration
-                </p>
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="reveal visible">
+                    <p class="eyebrow">Full-Stack Developer Portfolio</p>
+                    <h1><span class="gradient-text">Sergio Nicoletti</span></h1>
+                    <p class="hero-copy ita">Sviluppatore full-stack che realizza applicazioni web, strumenti software e soluzioni di automazione con integrazione AI</p>
+                    <p class="hero-copy eng">Full-stack developer building web applications, software tools, and automation solutions enhanced by AI integration</p>
 
-                <div class="flex flex-wrap justify-center gap-4 mb-12">
-                    <a href="#projects" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-all shadow-lg hover:shadow-indigo-500/30 ita">
-                        Esplora i miei progetti
-                    </a>
-                    <a href="#projects" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-all shadow-lg hover:shadow-indigo-500/30 eng">
-                        Explore my projects
-                    </a>
-                    <a href="#contact" class="px-6 py-3 bg-transparent border border-indigo-500 text-white hover:bg-indigo-500/10 rounded-lg transition-all ita">
-                        Contattami
-                    </a>
-                    <a href="#contact" class="px-6 py-3 bg-transparent border border-indigo-500 text-white hover:bg-indigo-500/10 rounded-lg transition-all eng">
-                        Contact me
-                    </a>
+                    <div class="cta-row">
+                        <a class="btn primary" href="#projects"><span class="ita">Esplora i miei progetti</span><span class="eng">Explore my projects</span></a>
+                        <a class="btn secondary" href="#contact"><span class="ita">Contattami</span><span class="eng">Contact me</span></a>
+                    </div>
+
+                    <div class="social-row" aria-label="Contatti rapidi">
+                        <a class="social-link" href="mailto:sernicoletti03@gmail.com" target="_blank" rel="noopener" aria-label="Email">
+                            <span class="social-icon">@</span>
+                            <span class="social-text">Email</span>
+                        </a>
+                        <a class="social-link" href="tel:+393516307729" aria-label="Telefono">
+                            <span class="social-icon">TEL</span>
+                            <span class="social-text ita">Telefono</span>
+                            <span class="social-text eng">Phone</span>
+                        </a>
+                        <a class="social-link" href="https://www.instagram.com/sergio.nico_?igsh=MWYwYmN2ZWdxb3plYg==" target="_blank" rel="noopener" aria-label="Instagram">
+                            <span class="social-icon">IG</span>
+                            <span class="social-text">Instagram</span>
+                        </a>
+                        <a class="social-link" href="https://www.linkedin.com/in/sergio-nicoletti-a0926527a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <span class="social-icon">IN</span>
+                            <span class="social-text">LinkedIn</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="flex justify-center space-x-6 text-gray-400">
-                    <a href="mailto:sernicoletti03@gmail.com" target="_blank" class="hover:text-white transition-colors">
-                        <i class="fas fa-envelope text-xl"></i>
-                    </a>
-                    <a href="tel:+393516307729" class="hover:text-white transition-colors">
-                        <i class="fas fa-phone text-xl"></i>
-                    </a>
-                    <a href="https://www.instagram.com/sergio.nico_?igsh=MWYwYmN2ZWdxb3plYg==" target="_blank" class="hover:text-white transition-colors">
-                        <i class="fab fa-instagram text-xl"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/sergio-nicoletti-a0926527a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="hover:text-white transition-colors">
-                        <i class="fab fa-linkedin text-xl"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <a href="#about" class="text-gray-400 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                    </svg>
-                </a>
-            </div>
-        </header>
 
-        <!-- About Section -->
-        <section id="about" class="py-20 px-4 relative">
-            <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center ita">
-                    <span class="code-bracket">&lt;</span>
-                    Chi Sono
-                    <span class="code-bracket">/&gt;</span>
-                </h2>
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center eng">
-                    <span class="code-bracket">&lt;</span>
-                    About Me
-                    <span class="code-bracket">/&gt;</span>
-                </h2>
-
-                <div class="flex flex-col md:flex-row gap-10 items-center">
-                    <div class="md:w-1/3">
-                        <div class="relative">
-                            <div class="w-64 h-64 mx-auto rounded-full overflow-hidden border-4 border-indigo-500/30 shadow-lg shadow-indigo-500/20">
-                                <img src="img.jpg" alt="">
+                <div class="showcase-wrap reveal visible">
+                    <div class="showcase-panel" aria-label="Portfolio overview">
+                        <div class="showcase-top">
+                            <div class="showcase-photo">
+                                <img src="img.jpg" alt="Sergio Nicoletti">
                             </div>
-                            <div class="absolute -bottom-3 -right-3 bg-indigo-600 text-white px-4 py-1 rounded-full shadow-lg">
-                                <span class="text-sm ita">Roma, Italia</span>
-                                <span class="text-sm eng">Rome, Italy</span>
+                            <div>
+                                <span class="panel-kicker">Portfolio</span>
+                                <h3 class="gradient-text ita">Soluzioni web, software e automazione AI</h3>
+                                <h3 class="gradient-text eng">Web, software and AI automation solutions</h3>
+                                <p class="ita">Un profilo orientato a strumenti concreti, integrazioni esterne e sviluppo full-stack.</p>
+                                <p class="eng">A profile focused on concrete tools, external integrations, and full-stack development.</p>
                             </div>
                         </div>
-                        <div class="mt-8 text-center">
-                            <p class="text-gray-400 ita">Data di nascita: 09/09/2003</p>
-                            <p class="text-gray-400 eng">Date of birth: 09/09/2003</p>
-                            <div class="flex justify-center space-x-4 mt-4">
-                                <a href="mailto:sernicoletti03@gmail.com" class="flex items-center text-gray-300 hover:text-white">
-                                    <i class="fas fa-envelope mr-2"></i>
-                                    <span class="text-sm">sernicoletti03@gmail.com</span>
-                                </a>
+
+                        <div class="focus-grid">
+                            <div class="focus-item">
+                                <span>01</span>
+                                <strong><span class="ita">Applicazioni web</span><span class="eng">Web applications</span></strong>
                             </div>
-                            <div class="flex justify-center mt-2">
-                                <a href="tel:+393516307729" class="flex items-center text-gray-300 hover:text-white">
-                                    <i class="fas fa-phone mr-2"></i>
-                                    <span class="text-sm">+39 351 630 7729</span>
-                                </a>
+                            <div class="focus-item">
+                                <span>02</span>
+                                <strong><span class="ita">Workflow automatizzati</span><span class="eng">Automated workflows</span></strong>
+                            </div>
+                            <div class="focus-item">
+                                <span>03</span>
+                                <strong><span class="ita">Integrazione AI e API</span><span class="eng">AI and API integration</span></strong>
+                            </div>
+                        </div>
+
+                        <div class="showcase-bottom">
+                            <div class="showcase-strip">
+                                <strong>Python · PHP · Java · JavaScript · SQL</strong>
+                                <span>Backend · Web Development · Database · Automation</span>
+                            </div>
+                            <div class="availability">
+                                <span class="ita">Roma, Italia</span>
+                                <span class="eng">Rome, Italy</span>
                             </div>
                         </div>
                     </div>
-                    <div class="md:w-2/3">
-                        <div class="card p-8 rounded-xl">
-                            <h3 class="text-2xl font-semibold mb-4 gradient-text ita">Profilo personale</h3>
-                            <h3 class="text-2xl font-semibold mb-4 gradient-text eng">Personal Profile</h3>
+                </div>
+            </div>
+        </section>
 
-                            <p class="text-gray-300 leading-relaxed mb-6 ita">
-                                Mi occupo di sviluppo full-stack, backend, automazione e integrazione di servizi esterni. Mi piace trasformare esigenze reali in strumenti concreti: applicazioni web, software gestionali, workflow automatizzati e soluzioni supportate da AI.
-                            </p>
-                            <p class="text-gray-300 leading-relaxed mb-6 eng">
-                                I work on full-stack development, backend systems, automation, and external service integration. I enjoy turning real-world needs into concrete tools: web applications, management software, automated workflows, and AI-supported solutions.
-                            </p>
+        <section id="about">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div>
+                        <span class="section-kicker">Profile</span>
+                        <h2><span class="ita">Chi Sono</span><span class="eng">About Me</span></h2>
+                    </div>
+                </div>
 
-                            <p class="text-gray-300 leading-relaxed mb-6 ita">
-                                Il mio approccio pratico mi permette di adattarmi rapidamente a nuove sfide e di gestire in autonomia lo sviluppo di sistemi anche complessi.
-                            </p>
-                            <p class="text-gray-300 leading-relaxed mb-6 eng">
-                                My practical approach allows me to quickly adapt to new challenges and independently manage the development of even complex systems.
-                            </p>
+                <div class="about-grid">
+                    <aside class="card profile-card reveal">
+                        <div class="portrait">
+                            <img src="img.jpg" alt="Sergio Nicoletti">
+                        </div>
+                        <div class="location-badge"><span class="ita">Roma, Italia</span><span class="eng">Rome, Italy</span></div>
+                        <p class="muted ita">Data di nascita: 09/09/2003</p>
+                        <p class="muted eng">Date of birth: 09/09/2003</p>
+                        <div class="contact-mini">
+                            <a href="mailto:sernicoletti03@gmail.com">sernicoletti03@gmail.com</a>
+                            <a href="tel:+393516307729">+39 351 630 7729</a>
+                        </div>
+                    </aside>
 
-                            <div class="mt-8">
-                                <h4 class="text-xl font-semibold mb-3 text-indigo-400 ita">Hobby e interessi</h4>
-                                <h4 class="text-xl font-semibold mb-3 text-indigo-400 eng">Hobbies and Interests</h4>
+                    <article class="card content-card reveal">
+                        <h3 class="gradient-text ita">Profilo personale</h3>
+                        <h3 class="gradient-text eng">Personal Profile</h3>
+                        <p class="ita">Mi occupo di sviluppo full-stack, backend, automazione e integrazione di servizi esterni. Mi piace trasformare esigenze reali in strumenti concreti: applicazioni web, software gestionali, workflow automatizzati e soluzioni supportate da AI.</p>
+                        <p class="eng">I work on full-stack development, backend systems, automation, and external service integration. I enjoy turning real-world needs into concrete tools: web applications, management software, automated workflows, and AI-supported solutions.</p>
+                        <p class="ita">Il mio approccio pratico mi permette di adattarmi rapidamente a nuove sfide e di gestire in autonomia lo sviluppo di sistemi anche complessi.</p>
+                        <p class="eng">My practical approach allows me to quickly adapt to new challenges and independently manage the development of even complex systems.</p>
 
-                                <div class="flex flex-wrap gap-3">
-                                    <span class="skill-pill px-4 py-2 rounded-full text-sm ita">Attività sportiva</span>
-                                    <span class="skill-pill px-4 py-2 rounded-full text-sm eng">Sports</span>
+                        <h4 class="ita">Hobby e interessi</h4>
+                        <h4 class="eng">Hobbies and Interests</h4>
+                        <div class="pill-row">
+                            <span class="pill ita">Attività sportiva</span>
+                            <span class="pill eng">Sports</span>
+                            <span class="pill ita">Scacchi</span>
+                            <span class="pill eng">Chess</span>
+                            <span class="pill ita">Natura</span>
+                            <span class="pill eng">Nature</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-                                    <span class="skill-pill px-4 py-2 rounded-full text-sm ita">Scacchi</span>
-                                    <span class="skill-pill px-4 py-2 rounded-full text-sm eng">Chess</span>
+        <section id="skills">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div>
+                        <span class="section-kicker">Stack</span>
+                        <h2><span class="ita">Competenze Tecniche</span><span class="eng">Technical Skills</span></h2>
+                    </div>
+                </div>
 
-                                    <span class="skill-pill px-4 py-2 rounded-full text-sm ita">Natura</span>
-                                    <span class="skill-pill px-4 py-2 rounded-full text-sm eng">Nature</span>
+                <div class="skills-grid">
+                    <div class="card skill-card stack-showcase reveal">
+                        <div class="stack-grid">
+                            <div class="skill-block stack-tile stack-tile-wide">
+                                <h3 class="gradient-text ita">Linguaggi di programmazione</h3>
+                                <h3 class="gradient-text eng">Programming Languages</h3>
+                                <div class="pill-row">
+                                    <span class="pill">Python</span>
+                                    <span class="pill">PHP</span>
+                                    <span class="pill">Java</span>
+                                    <span class="pill">JavaScript</span>
+                                    <span class="pill">C++</span>
+                                    <span class="pill">VBA</span>
+                                </div>
+                            </div>
+                            <div class="skill-block stack-tile">
+                                <h3 class="gradient-text">Web Development</h3>
+                                <div class="pill-row">
+                                    <span class="pill">HTML</span>
+                                    <span class="pill">CSS</span>
+                                </div>
+                            </div>
+                            <div class="skill-block stack-tile">
+                                <h3 class="gradient-text">Database</h3>
+                                <div class="pill-row">
+                                    <span class="pill">SQL</span>
+                                    <span class="pill">NoSQL</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <div class="section-divider"></div>
-
-        <!-- Skills Section -->
-        <section id="skills" class="py-20 px-4 relative">
-            <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center ita">
-                    <span class="code-bracket">&lt;</span>
-                    Competenze&nbsp;
-                    <span class="nowrap"><span class="text-white">Tecniche</span><span class="code-bracket">/&gt;</span></span>
-                </h2>
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center eng">
-                    <span class="code-bracket">&lt;</span>
-                    Skills&nbsp;
-                    <span class="nowrap"><span class="text-white">Technical</span><span class="code-bracket">/&gt;</span></span>
-                </h2>                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div class="card p-8 rounded-xl">
-                        <h3 class="text-2xl font-semibold mb-6 gradient-text ita">Linguaggi di programmazione</h3>
-                        <h3 class="text-2xl font-semibold mb-6 gradient-text eng">Programming Languages</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-pill px-4 py-2 rounded-full text-sm">Python</span>
-                            <span class="skill-pill px-4 py-2 rounded-full text-sm">PHP</span>
-                            <span class="skill-pill px-4 py-2 rounded-full text-sm">Java</span>
-                            <span class="skill-pill px-4 py-2 rounded-full text-sm">JavaScript</span>
-                            <span class="skill-pill px-4 py-2 rounded-full text-sm">C++</span>
-                            <span class="skill-pill px-4 py-2 rounded-full text-sm">VBA</span>
+                    <div class="card skill-card reveal">
+                        <div class="skill-block">
+                            <h3 class="gradient-text ita">Altre competenze</h3>
+                            <h3 class="gradient-text eng">Other skills</h3>
+                            <ul class="list">
+                                <li><span class="check"></span><span class="ita">Integrazione avanzata di strumenti di intelligenza artificiale nello sviluppo software</span><span class="eng">Advanced integration of artificial intelligence tools in software development</span></li>
+                                <li><span class="check"></span><span class="ita">Esperienza nello sviluppo full stack</span><span class="eng">Experience in full-stack development</span></li>
+                                <li><span class="check"></span><span class="ita">Automazione di processi</span><span class="eng">Process automation</span></li>
+                                <li><span class="check"></span><span class="ita">Integrazione di API esterne</span><span class="eng">Integration of external APIs</span></li>
+                                <li><span class="check"></span><span class="ita">Utilizzo dell’AI come supporto allo sviluppo, alla prototipazione e all’automazione</span><span class="eng">Use of AI to support development, prototyping, and automation</span></li>
+                            </ul>
                         </div>
-                        
-                        <h3 class="text-2xl font-semibold mb-6 mt-8 gradient-text">Web Development</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-pill px-4 py-2 rounded-full text-sm">HTML</span>
-                            <span class="skill-pill px-4 py-2 rounded-full text-sm">CSS</span>
+
+                        <div class="skill-block">
+                            <h3 class="gradient-text ita">Competenze trasversali</h3>
+                            <h3 class="gradient-text eng">Soft skills</h3>
+                            <ul class="list">
+                                <li><span class="check"></span><span class="ita">Curiosità e apertura verso l’adozione di nuove tecnologie nel lavoro quotidiano</span><span class="eng">Curiosity and openness towards adopting new technologies in daily work</span></li>
+                                <li><span class="check"></span><span class="ita">Apprendimento rapido e adattabilità</span><span class="eng">Fast learning and adaptability</span></li>
+                                <li><span class="check"></span><span class="ita">Attitudine al problem solving e all'autonomia</span><span class="eng">Problem-solving attitude and autonomy</span></li>
+                            </ul>
                         </div>
-                        
-                        <h3 class="text-2xl font-semibold mb-6 mt-8 gradient-text">Database</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-pill px-4 py-2 rounded-full text-sm">SQL</span>
-                            <span class="skill-pill px-4 py-2 rounded-full text-sm">NoSQL</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card p-8 rounded-xl">
-                        <h3 class="text-2xl font-semibold mb-6 gradient-text ita">Altre competenze</h3>
-                        <h3 class="text-2xl font-semibold mb-6 gradient-text eng">Other skills</h3>
 
-                        <ul class="space-y-4 text-gray-300">
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                <span class="ita">Integrazione avanzata di strumenti di intelligenza artificiale nello sviluppo software</span>
-                                <span class="eng">Advanced integration of artificial intelligence tools in software development</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                <span class="ita">Esperienza nello sviluppo full stack</span>
-                                <span class="eng">Experience in full-stack development</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                <span class="ita">Automazione di processi</span>
-                                <span class="eng">Process automation</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                <span class="ita">Integrazione di API esterne</span>
-                                <span class="eng">Integration of external APIs</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                <span class="ita">Utilizzo dell’AI come supporto allo sviluppo, alla prototipazione e all’automazione</span>
-                                <span class="eng">Use of AI to support development, prototyping, and automation</span>
-                            </li>
-                        </ul>
-
-                        <h3 class="text-2xl font-semibold mb-6 mt-8 gradient-text ita">Competenze trasversali</h3>
-                        <h3 class="text-2xl font-semibold mb-6 mt-8 gradient-text eng">Soft skills</h3>
-
-                        <ul class="space-y-4 text-gray-300">
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                <span class="ita">Curiosità e apertura verso l’adozione di nuove tecnologie nel lavoro quotidiano</span>
-                                <span class="eng">Curiosity and openness towards adopting new technologies in daily work</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                <span class="ita">Apprendimento rapido e adattabilità</span>
-                                <span class="eng">Fast learning and adaptability</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                <span class="ita">Attitudine al problem solving e all'autonomia</span>
-                                <span class="eng">Problem-solving attitude and autonomy</span>
-                            </li>
-                        </ul>
-
-                        <h3 class="text-2xl font-semibold mb-6 mt-8 gradient-text ita">Lingue</h3>
-                        <h3 class="text-2xl font-semibold mb-6 mt-8 gradient-text eng">Languages</h3>
-
-                        <div class="flex items-center">
-                            <span class="mr-3 ita">Inglese:</span>
-                            <span class="mr-3 eng">English:</span>
-                            <div class="flex">
-                                <span class="skill-pill px-4 py-1 rounded-full text-sm ita">Intermedio, autonomia nella comunicazione scritta e orale</span>
-                                <span class="skill-pill px-4 py-1 rounded-full text-sm eng">Intermediate, independent in written and spoken communication</span>
+                        <div class="skill-block">
+                            <h3 class="gradient-text ita">Lingue</h3>
+                            <h3 class="gradient-text eng">Languages</h3>
+                            <div class="pill-row">
+                                <span class="pill ita">Inglese: Intermedio, autonomia nella comunicazione scritta e orale</span>
+                                <span class="pill eng">English: Intermediate, independent in written and spoken communication</span>
                             </div>
                         </div>
                     </div>
@@ -334,506 +1565,336 @@
             </div>
         </section>
 
-        <div class="section-divider"></div>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 px-4 relative">
-            <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center ita">
-                    <span class="code-bracket">&lt;</span>
-                    Esperienze professionali e progetti
-                    <span class="code-bracket">/&gt;</span>
-                </h2>
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center eng">
-                    <span class="code-bracket">&lt;</span>
-                    Professional Experiences and Projects
-                    <span class="code-bracket">/&gt;</span>
-                </h2>
-                <div class="relative">
-                    <div class="projects-container flex overflow-x-auto pb-8 hide-scrollbar" id="projectsSlider">
-                        <!-- Project 1 -->
-                        <div class="project-card card rounded-xl p-6 flex flex-col">
-                            <div class="bg-indigo-500/20 rounded-lg p-4 mb-4 flex items-center justify-center h-40">
-                                <svg class="w-24 h-24 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Sistema di Automazione AI</h3>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">AI Automation System</h3>
-
-                            <p class="text-gray-300 flex-grow ita">
-                                Sviluppo di un'applicazione personale con integrazione di intelligenza artificiale per l’automazione di processi complessi, sfruttando modelli linguistici avanzati e servizi esterni tramite API.
-                            </p>
-                            <p class="text-gray-300 flex-grow eng">
-                                Development of a personal application integrating artificial intelligence for the automation of complex processes, leveraging advanced language models and external services via API.
-                            </p>
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Python</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">OpenAI API</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Altre API</span>
-                            </div>
-                        </div>
-
-                        <!-- Project 2 -->
-                        <div class="project-card card rounded-xl p-6 flex flex-col">
-                            <div class="bg-indigo-500/20 rounded-lg p-4 mb-4 flex items-center justify-center h-40">
-                                <svg class="w-24 h-24 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
-                                    </path>
-                                </svg>
-                            </div>
-
-                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">
-                                Automazione di Processi
-                            </h3>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">
-                                Process Automation
-                            </h3>
-
-                            <p class="text-gray-300 flex-grow ita">
-                               Sviluppo di script e strumenti software in Python per automatizzare attività operative e flussi di lavoro, con integrazione di API esterne e logiche backend per l’elaborazione automatica dei dati.
-                            </p>
-
-                            <p class="text-gray-300 flex-grow eng">
-                                Development of Python scripts and software tools to automate operational tasks and workflows, integrating external APIs and backend logic for automated data processing.
-                            </p>
-
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Python</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Automation</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">API Integration</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Project 3 -->
-                        <div class="project-card card rounded-xl p-6 flex flex-col">
-                            <div class="bg-indigo-500/20 rounded-lg p-4 mb-4 flex items-center justify-center h-40">
-                                <svg class="w-24 h-24 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Gestionale turni per franchising McDonald’s</h3>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">Shift Management System for McDonald’s Franchise</h3>
-
-                            <p class="text-gray-300 flex-grow ita">
-                                Sviluppo di un gestionale per la gestione dei dipendenti e la generazione automatica dei turni su base parametrica.
-                            </p>
-                            <p class="text-gray-300 flex-grow eng">
-                                Development of a management system for employee scheduling and automatic shift generation based on parameters.
-                            </p>
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Visual Basic</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Access</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">SQL</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Project 4 -->
-                        <div class="project-card card rounded-xl p-6 flex flex-col">
-                            <div class="bg-indigo-500/20 rounded-lg p-4 mb-4 flex items-center justify-center h-40">
-                                <svg class="w-24 h-24 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Sito aziendale per realtà logistica</h3>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">Corporate Website for a Logistics Company</h3>
-
-                            <p class="text-gray-300 flex-grow ita">
-                                Sviluppo del sito web vetrina per un’azienda del settore logistico.
-                            </p>
-                            <p class="text-gray-300 flex-grow eng">
-                                Development of a showcase website for a company in the logistics sector.
-                            </p>
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">HTML</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">CSS</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">JavaScript</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Project 5 -->
-                        <div class="project-card card rounded-xl p-6 flex flex-col">
-                            <div class="bg-indigo-500/20 rounded-lg p-4 mb-4 flex items-center justify-center h-40">
-                                <svg class="w-24 h-24 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">App per gestione rifornimenti carburante</h3>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">App for Managing Fuel Refueling</h3>
-
-                            <p class="text-gray-300 flex-grow ita">
-                                Sviluppo di un'app Android per la gestione dei rifornimenti di carburante effettuati dai dipendenti all'interno di un contesto aziendale logistico.
-                            </p>
-                            <p class="text-gray-300 flex-grow eng">
-                                Development of an Android app for managing fuel refueling carried out by employees within a logistics company.
-                            </p>
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Java</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Firebase Database</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Project 6 -->
-                        <div class="project-card card rounded-xl p-6 flex flex-col">
-                            <div class="bg-indigo-500/20 rounded-lg p-4 mb-4 flex items-center justify-center h-40">
-                                <svg class="w-24 h-24 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Software per gestione biblioteca scolastica</h3>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">Software for School Library Management</h3>
-
-                            <p class="text-gray-300 flex-grow ita">
-                                Applicazione per la gestione dei prestiti e del catalogo in una biblioteca scolastica.
-                            </p>
-                            <p class="text-gray-300 flex-grow eng">
-                                Application for managing loans and the catalog in a school library.
-                            </p>
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">PHP</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">JavaScript</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">SQL</span>
-                            </div>
-                        </div>
-
-                        <!-- Project 7 -->
-                        <div class="project-card card rounded-xl p-6 flex flex-col">
-                            <div class="bg-indigo-500/20 rounded-lg p-4 mb-4 flex items-center justify-center h-40">
-                                <svg class="w-24 h-24 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Sito vetrina per un’associazione</h3>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">Showcase Website for an Association</h3>
-
-                            <p class="text-gray-300 flex-grow ita">
-                                Creazione di un sito web per la presentazione pubblica di un'associazione.
-                            </p>
-                            <p class="text-gray-300 flex-grow eng">
-                                Creation of a website for the public presentation of an association.
-                            </p>
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">HTML</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">CSS</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">JavaScript</span>
-                            </div>
-                        </div>
-
-                        <!-- Project 8 -->
-                        <div class="project-card card rounded-xl p-6 flex flex-col">
-                            <div class="bg-indigo-500/20 rounded-lg p-4 mb-4 flex items-center justify-center h-40">
-                                <svg class="w-24 h-24 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Sistema gestione noleggi con PDF</h3>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">Rental Management System with PDF</h3>
-
-                            <p class="text-gray-300 flex-grow ita">
-                                Sviluppo di un sistema gestionale per la compilazione e generazione automatica di contratti di noleggio, con logiche di inserimento dati e output PDF.
-                            </p>
-                            <p class="text-gray-300 flex-grow eng">
-                                Development of a management system for the compilation and automatic generation of rental contracts, with data entry logic and PDF output.
-                            </p>
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">PHP</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">JavaScript</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">SQL</span>
-                            </div>
-                        </div>
-
-                        <!-- Project 9 -->
-                        <div class="project-card card rounded-xl p-6 flex flex-col">
-                            <div class="bg-indigo-500/20 rounded-lg p-4 mb-4 flex items-center justify-center h-40">
-                                <svg class="w-24 h-24 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text ita">Sito web per pizzeria locale</h3>
-                            <h3 class="text-xl font-semibold mb-2 gradient-text eng">Website for a Local Pizzeria</h3>
-
-                            <p class="text-gray-300 flex-grow ita">
-                                Realizzazione di un sito web vetrina per una pizzeria.
-                            </p>
-                            <p class="text-gray-300 flex-grow eng">
-                                Development of a showcase website for a pizzeria.
-                            </p>
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">HTML</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">CSS</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">JavaScript</span>
-                            </div>
-                        </div>
+        <section id="projects">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div>
+                        <span class="section-kicker">Work</span>
+                        <h2><span class="ita">Esperienze professionali e progetti</span><span class="eng">Professional Experiences and Projects</span></h2>
                     </div>
-                    
-                    <!-- Navigation arrows -->
-                    <button id="prevProject" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-indigo-600/80 hover:bg-indigo-600 text-white rounded-r-lg p-2 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                    </button>
-                    <button id="nextProject" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-indigo-600/80 hover:bg-indigo-600 text-white rounded-l-lg p-2 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
                 </div>
-                
-                <div class="mt-8 text-center text-gray-400 text-sm">
+
+                <div class="projects-grid">
+                    <article class="project-card reveal">
+                        <div class="project-icon">AI</div>
+                        <h3 class="gradient-text ita">Sistema di Automazione AI</h3>
+                        <h3 class="gradient-text eng">AI Automation System</h3>
+                        <p class="ita">Sviluppo di un’applicazione personale con integrazione di intelligenza artificiale per l’automazione di processi complessi, sfruttando modelli linguistici avanzati e servizi esterni tramite API.</p>
+                        <p class="eng">Development of a personal application integrating artificial intelligence for the automation of complex processes, leveraging advanced language models and external services via API.</p>
+                        <div class="tags"><span class="tag">Python</span><span class="tag">OpenAI API</span><span class="tag">Altre API</span></div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-icon">PY</div>
+                        <h3 class="gradient-text ita">Automazione di Processi</h3>
+                        <h3 class="gradient-text eng">Process Automation</h3>
+                        <p class="ita">Sviluppo di script e strumenti software in Python per automatizzare attività operative e flussi di lavoro, con integrazione di API esterne e logiche backend per l’elaborazione automatica dei dati.</p>
+                        <p class="eng">Development of Python scripts and software tools to automate operational tasks and workflows, integrating external APIs and backend logic for automated data processing.</p>
+                        <div class="tags"><span class="tag">Python</span><span class="tag">Automation</span><span class="tag">API Integration</span></div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-icon">DB</div>
+                        <h3 class="gradient-text ita">Gestionale turni per franchising McDonald’s</h3>
+                        <h3 class="gradient-text eng">Shift Management System for McDonald’s Franchise</h3>
+                        <p class="ita">Sviluppo di un gestionale per la gestione dei dipendenti e la generazione automatica dei turni su base parametrica.</p>
+                        <p class="eng">Development of a management system for employee scheduling and automatic shift generation based on parameters.</p>
+                        <div class="tags"><span class="tag">Visual Basic</span><span class="tag">Access</span><span class="tag">SQL</span></div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-icon">WEB</div>
+                        <h3 class="gradient-text ita">Sito aziendale per realtà logistica</h3>
+                        <h3 class="gradient-text eng">Corporate Website for a Logistics Company</h3>
+                        <p class="ita">Sviluppo del sito web vetrina per un’azienda del settore logistico.</p>
+                        <p class="eng">Development of a showcase website for a company in the logistics sector.</p>
+                        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-icon">APP</div>
+                        <h3 class="gradient-text ita">App per gestione rifornimenti carburante</h3>
+                        <h3 class="gradient-text eng">App for Managing Fuel Refueling</h3>
+                        <p class="ita">Sviluppo di un’app Android per la gestione dei rifornimenti di carburante effettuati dai dipendenti all’interno di un contesto aziendale logistico.</p>
+                        <p class="eng">Development of an Android app for managing fuel refueling carried out by employees within a logistics company.</p>
+                        <div class="tags"><span class="tag">Java</span><span class="tag">Firebase Database</span></div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-icon">SQL</div>
+                        <h3 class="gradient-text ita">Software per gestione biblioteca scolastica</h3>
+                        <h3 class="gradient-text eng">Software for School Library Management</h3>
+                        <p class="ita">Applicazione per la gestione dei prestiti e del catalogo in una biblioteca scolastica.</p>
+                        <p class="eng">Application for managing loans and the catalog in a school library.</p>
+                        <div class="tags"><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">SQL</span></div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-icon">WWW</div>
+                        <h3 class="gradient-text ita">Sito vetrina per un’associazione</h3>
+                        <h3 class="gradient-text eng">Showcase Website for an Association</h3>
+                        <p class="ita">Creazione di un sito web per la presentazione pubblica di un’associazione.</p>
+                        <p class="eng">Creation of a website for the public presentation of an association.</p>
+                        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-icon">PDF</div>
+                        <h3 class="gradient-text ita">Sistema gestione noleggi con PDF</h3>
+                        <h3 class="gradient-text eng">Rental Management System with PDF</h3>
+                        <p class="ita">Sviluppo di un sistema gestionale per la compilazione e generazione automatica di contratti di noleggio, con logiche di inserimento dati e output PDF.</p>
+                        <p class="eng">Development of a management system for the compilation and automatic generation of rental contracts, with data entry logic and PDF output.</p>
+                        <div class="tags"><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">SQL</span></div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-icon">WEB</div>
+                        <h3 class="gradient-text ita">Sito web per pizzeria locale</h3>
+                        <h3 class="gradient-text eng">Website for a Local Pizzeria</h3>
+                        <p class="ita">Realizzazione di un sito web vetrina per una pizzeria.</p>
+                        <p class="eng">Development of a showcase website for a pizzeria.</p>
+                        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+                    </article>
+                </div>
+
+                <div class="project-note reveal">
                     <p class="ita">Tutti i progetti elencati sono stati da me ideati e sviluppati integralmente, in autonomia o su richiesta di clienti privati, curandone sia la progettazione che l'implementazione tecnica.</p>
                     <p class="eng">All the listed projects were entirely designed and developed by me, either independently or upon request from private clients, taking care of both the design and technical implementation.</p>
                 </div>
             </div>
         </section>
 
-        <div class="section-divider"></div>
+        <section id="education">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div>
+                        <span class="section-kicker">Education</span>
+                        <h2><span class="ita">Formazione</span><span class="eng">Education</span></h2>
+                    </div>
+                </div>
 
-        <!-- Education Section -->
-        <section id="education" class="py-20 px-4 relative">
-            <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center ita">
-                    <span class="code-bracket">&lt;</span>
-                    Formazione
-                    <span class="code-bracket">/&gt;</span>
-                </h2>
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center eng">
-                    <span class="code-bracket">&lt;</span>
-                    Education
-                    <span class="code-bracket">/&gt;</span>
-                </h2>
-                <div class="max-w-3xl mx-auto">
-                    <div class="card p-8 rounded-xl relative">
-                        
-                        <div class="flex items-center mb-6">
-                            <div class="bg-indigo-500/20 p-3 rounded-lg mr-4">
-                                <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
-                                </svg>
-                            </div>
+                <div class="timeline">
+                    <article class="card education-card reveal">
+                        <div class="education-head">
+                            <div class="edu-icon">ED</div>
                             <div>
-                                <h3 class="text-xl font-semibold gradient-text">IIS Statista Aldo Moro – Passo Corese (RI)</h3>
-                                <p class="text-gray-400 ita">Diploma in Istituto Tecnico – Settore Tecnologico (ITT)</p>
-                                <p class="text-gray-400 eng">Technical Institute Diploma – Technological Sector (ITT)</p>
+                                <h3 class="gradient-text">IIS Statista Aldo Moro – Passo Corese (RI)</h3>
+                                <p class="muted ita">Diploma in Istituto Tecnico – Settore Tecnologico (ITT)</p>
+                                <p class="muted eng">Technical Institute Diploma – Technological Sector (ITT)</p>
                             </div>
                         </div>
-
-                        <div class="ml-16">
-                            <h4 class="text-lg font-medium text-indigo-400 mb-3 ita">Competenze Tecnico-Pratiche Acquisite</h4>
-                            <h4 class="text-lg font-medium text-indigo-400 mb-3 eng">Technical and Practical Skills Acquired</h4>
-                            <ul class="space-y-4 text-gray-300">
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="ita">Progettazione e sviluppo di sistemi integrati hardware/software con interfacce di comunicazione</span>
-                                    <span class="eng">Design and development of integrated hardware/software systems with communication interfaces</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-indigo-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="ita">Realizzazione e test di circuiti elettronici analogici e digitali</span>
-                                    <span class="eng">Implementation and testing of analog and digital electronic circuits</span>
-                                </li>
+                        <div class="education-body">
+                            <h4 class="ita">Competenze Tecnico-Pratiche Acquisite</h4>
+                            <h4 class="eng">Technical and Practical Skills Acquired</h4>
+                            <ul class="list">
+                                <li><span class="check"></span><span class="ita">Progettazione e sviluppo di sistemi integrati hardware/software con interfacce di comunicazione</span><span class="eng">Design and development of integrated hardware/software systems with communication interfaces</span></li>
+                                <li><span class="check"></span><span class="ita">Realizzazione e test di circuiti elettronici analogici e digitali</span><span class="eng">Implementation and testing of analog and digital electronic circuits</span></li>
                             </ul>
-                        </div>
-                        <div class="ml-16" style="margin-top: 1.5rem;">
-                            <h4 class="text-lg font-medium text-indigo-400 mb-3 ita">Progetto di maturità</h4>
-                            <h4 class="text-lg font-medium text-indigo-400 mb-3 eng">Graduation Project</h4>
 
-                            <p class="text-gray-300 mb-6 ita">
-                                Sviluppo di un veicolo autopilota in grado di evitare ostacoli ed eseguire manovre autonome. Il progetto comprendeva sia la progettazione hardware che software, inclusa la realizzazione di un sito web dedicato.
-                            </p>
-                            <p class="text-gray-300 mb-6 eng">
-                                Development of a self-driving vehicle capable of avoiding obstacles and performing autonomous maneuvers. The project included both hardware and software design, as well as the creation of a dedicated website.
-                            </p>
-
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">C++</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Hardware</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Arduino</span>
-                            </div>
+                            <h4 class="ita" style="margin-top: 24px;">Progetto di maturità</h4>
+                            <h4 class="eng" style="margin-top: 24px;">Graduation Project</h4>
+                            <p class="ita">Sviluppo di un veicolo autopilota in grado di evitare ostacoli ed eseguire manovre autonome. Il progetto comprendeva sia la progettazione hardware che software, inclusa la realizzazione di un sito web dedicato.</p>
+                            <p class="eng">Development of a self-driving vehicle capable of avoiding obstacles and performing autonomous maneuvers. The project included both hardware and software design, as well as the creation of a dedicated website.</p>
+                            <div class="tags"><span class="tag">C++</span><span class="tag">Hardware</span><span class="tag">Arduino</span></div>
                         </div>
-                    </div>
-                    <div class="card p-8 rounded-xl relative mt-8">
-                        <div class="flex items-center mb-6">
-                            <div class="bg-indigo-500/20 p-3 rounded-lg mr-4">
-                                <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                                </svg>
-                            </div>
+                    </article>
+
+                    <article class="card education-card reveal">
+                        <div class="education-head">
+                            <div class="edu-icon">AI</div>
                             <div>
-                                <h3 class="text-xl font-semibold gradient-text">Master AI Development – ProfessionAI</h3>
-                                <p class="text-gray-400 ita">In corso</p>
-                                <p class="text-gray-400 eng">Ongoing</p>
+                                <h3 class="gradient-text">Master AI Development – ProfessionAI</h3>
+                                <p class="muted ita">In corso</p>
+                                <p class="muted eng">Ongoing</p>
                             </div>
                         </div>
-
-                        <div class="ml-16">
-                            <p class="text-gray-300 mb-6 ita">
-                                Percorso avanzato focalizzato sullo sviluppo di applicazioni basate su intelligenza artificiale,
-                                con utilizzo pratico di modelli linguistici, integrazione di API e realizzazione di strumenti software orientati all’automazione.
-                            </p>
-                            <p class="text-gray-300 mb-6 eng">
-                                Advanced program focused on the development of artificial intelligence-based applications,
-                                with practical use of language models, API integration, and the creation of software tools oriented toward automation.
-                            </p>
-
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">AI Development</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">LLMs</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">API Integration</span>
-                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">Python</span>
-                            </div>
+                        <div class="education-body">
+                            <p class="ita">Percorso avanzato focalizzato sullo sviluppo di applicazioni basate su intelligenza artificiale, con utilizzo pratico di modelli linguistici, integrazione di API e realizzazione di strumenti software orientati all’automazione.</p>
+                            <p class="eng">Advanced program focused on the development of artificial intelligence-based applications, with practical use of language models, API integration, and the creation of software tools oriented toward automation.</p>
+                            <div class="tags"><span class="tag">AI Development</span><span class="tag">LLMs</span><span class="tag">API Integration</span><span class="tag">Python</span></div>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <div class="section-divider"></div>
+        <section id="contact">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div>
+                        <span class="section-kicker">Contact</span>
+                        <h2><span class="ita">Contattami</span><span class="eng">Contact Me</span></h2>
+                    </div>
+                </div>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 px-4 relative">
-            <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center ita">
-                    <span class="code-bracket">&lt;</span>
-                    Contattami
-                    <span class="code-bracket">/&gt;</span>
-                </h2>
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center eng">
-                    <span class="code-bracket">&lt;</span>
-                    Contact Me
-                    <span class="code-bracket">/&gt;</span>
-                </h2>
-
-                
-                <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="card p-8 rounded-xl">
-                        <h3 class="text-2xl font-semibold mb-6 gradient-text ita">Informazioni di contatto</h3>
-                        <h3 class="text-2xl font-semibold mb-6 gradient-text eng">Contact Information</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-center">
-                                <div class="bg-indigo-500/20 p-3 rounded-lg mr-4">
-                                    <i class="fas fa-envelope text-indigo-400"></i>
-                                </div>
+                <div class="contact-grid">
+                    <div class="card contact-card reveal">
+                        <h3 class="gradient-text ita">Informazioni di contatto</h3>
+                        <h3 class="gradient-text eng">Contact Information</h3>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">ME</div>
                                 <div>
-                                    <p class="text-sm text-gray-400">Email</p>
-                                    <a href="mailto:sernicoletti03@gmail.com" target="_blank" class="text-white hover:text-indigo-300 transition-colors">sernicoletti03@gmail.com</a>
+                                    <p class="muted">Email</p>
+                                    <a class="contact-link" href="mailto:sernicoletti03@gmail.com" target="_blank" rel="noopener">sernicoletti03@gmail.com</a>
                                 </div>
                             </div>
-                            
-                            <div class="flex items-center">
-                                <div class="bg-indigo-500/20 p-3 rounded-lg mr-4">
-                                    <i class="fas fa-phone text-indigo-400"></i>
-                                </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">PH</div>
                                 <div>
-                                    <p class="text-sm text-gray-400 ita">Telefono</p>
-                                    <p class="text-sm text-gray-400 eng">Phone</p>
-                                    <a href="tel:+393516307729" class="text-white hover:text-indigo-300 transition-colors">+39 351 630 7729</a>
+                                    <p class="muted ita">Telefono</p>
+                                    <p class="muted eng">Phone</p>
+                                    <a class="contact-link" href="tel:+393516307729">+39 351 630 7729</a>
                                 </div>
                             </div>
-                            
-                            <div class="flex items-center">
-                                <div class="bg-indigo-500/20 p-3 rounded-lg mr-4">
-                                    <i class="fas fa-map-marker-alt text-indigo-400"></i>
-                                </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">IT</div>
                                 <div>
-                                    <p class="text-sm text-gray-400 ita">Località</p>
-                                    <p class="text-sm text-gray-400 eng">Location</p>
-
-                                    <p class="text-white ita">Roma, Italia</p>
-                                    <p class="text-white eng">Rome, Italy</p>
+                                    <p class="muted ita">Località</p>
+                                    <p class="muted eng">Location</p>
+                                    <p class="ita">Roma, Italia</p>
+                                    <p class="eng">Rome, Italy</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="card p-8 rounded-xl">
-                        <h3 class="text-2xl font-semibold mb-6 gradient-text ita">Inviami un messaggio</h3>
-                        <h3 class="text-2xl font-semibold mb-6 gradient-text eng">Send Me a Message</h3>
 
-                        <form id="contactForm" class="space-y-4">
-                            <div>
-                                <label for="name" class="block text-gray-400 mb-1 ita">Nome</label>
-                                <label for="name" class="block text-gray-400 mb-1 eng" style="display: none;">Name</label>
-                                <input type="text" id="name" name="user_name" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-500 transition-colors" required="">
+                    <div class="card contact-card reveal">
+                        <h3 class="gradient-text ita">Inviami un messaggio</h3>
+                        <h3 class="gradient-text eng">Send Me a Message</h3>
+                        <form class="form" id="contactForm">
+                            <div class="field">
+                                <label for="name"><span class="ita">Nome</span><span class="eng">Name</span></label>
+                                <input type="text" id="name" name="user_name" required>
                             </div>
-
-                            <div>
-                                <label for="email" class="block text-gray-400 mb-1 ita">Email</label>
-                                <label for="email" class="block text-gray-400 mb-1 eng" style="display: none;">Email</label>
-                                <input type="email" id="email" name="user_email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-500 transition-colors" required="">
+                            <div class="field">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="user_email" required>
                             </div>
-
-                            <div>
-                                <label for="message" class="block text-gray-400 mb-1 ita">Messaggio</label>
-                                <label for="message" class="block text-gray-400 mb-1 eng" style="display: none;">Message</label>
-                                <textarea id="message" rows="4" name="message" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-indigo-500 transition-colors" required=""></textarea>
+                            <div class="field">
+                                <label for="message"><span class="ita">Messaggio</span><span class="eng">Message</span></label>
+                                <textarea id="message" name="message" rows="4" required></textarea>
                             </div>
-
-                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-all shadow-lg hover:shadow-indigo-500/30 ita">
-                                Invia messaggio
-                            </button>
-                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-all shadow-lg hover:shadow-indigo-500/30 eng">
-                                Send Message
-                            </button>
+                            <button class="btn primary" type="submit"><span class="ita">Invia messaggio</span><span class="eng">Send Message</span></button>
                         </form>
-
-                        <div id="loader" class="loader"></div>
-
-                        <div id="formSuccess" class="hidden mt-4 p-3 bg-green-500/20 border border-green-500/30 text-green-400 rounded-lg">
-                            <div class="ita">
-                                Messaggio inviato con successo! Ti risponderò al più presto.
-                            </div>
-                            <div class="eng">
-                                Message sent successfully! I will get back to you as soon as possible.
-                            </div>
+                        <div id="formSuccess" class="form-status">
+                            <div class="ita">Messaggio inviato con successo! Ti risponderò al più presto.</div>
+                            <div class="eng">Message sent successfully! I will get back to you as soon as possible.</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+    </main>
 
-        <!-- Footer -->
-        <footer class="bg-gray-900 border-t border-indigo-500/20 py-10 px-4">
-            <div class="container mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="flex items-center mb-6 md:mb-0">
-                        <span class="code-bracket text-xl mr-1">&lt;</span>
-                        <h1 class="text-xl font-bold gradient-text">Sergio Nicoletti</h1>
-                        <span class="code-bracket text-xl ml-1">/&gt;</span>
-                    </div>
-                    
-                    <div class="flex space-x-6 text-gray-400">
-                        <a href="mailto:sernicoletti03@gmail.com" target="_blank" class="hover:text-white transition-colors">
-                            <i class="fas fa-envelope text-xl"></i>
-                        </a>
-                        <a href="tel:+393516307729" class="hover:text-white transition-colors">
-                            <i class="fas fa-phone text-xl"></i>
-                        </a>
-                        <a href="https://www.instagram.com/sergio.nico_?igsh=MWYwYmN2ZWdxb3plYg==" target="_blank" class="hover:text-white transition-colors">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/sergio-nicoletti-a0926527a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="hover:text-white transition-colors">
-                            <i class="fab fa-linkedin text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="mt-8 text-center text-gray-500 text-sm">
-                    <p class="ita">© 2025 Sergio Nicoletti. Tutti i diritti riservati.</p>
-                    <p class="eng">© 2025 Sergio Nicoletti. All rights reserved.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <a class="brand" href="#top" aria-label="Sergio Nicoletti">
+                    <span class="brand-mark">&lt;</span>
+                    <span class="brand-name">Sergio Nicoletti</span>
+                    <span class="brand-mark">/&gt;</span>
+                </a>
+                <div class="social-row" style="margin-top: 0;">
+                    <a class="social-link" href="mailto:sernicoletti03@gmail.com" target="_blank" rel="noopener" aria-label="Email">
+                        <span class="social-icon">@</span>
+                        <span class="social-text">Email</span>
+                    </a>
+                    <a class="social-link" href="tel:+393516307729" aria-label="Telefono">
+                        <span class="social-icon">TEL</span>
+                        <span class="social-text ita">Telefono</span>
+                        <span class="social-text eng">Phone</span>
+                    </a>
+                    <a class="social-link" href="https://www.instagram.com/sergio.nico_?igsh=MWYwYmN2ZWdxb3plYg==" target="_blank" rel="noopener" aria-label="Instagram">
+                        <span class="social-icon">IG</span>
+                        <span class="social-text">Instagram</span>
+                    </a>
+                    <a class="social-link" href="https://www.linkedin.com/in/sergio-nicoletti-a0926527a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <span class="social-icon">IN</span>
+                        <span class="social-text">LinkedIn</span>
+                    </a>
                 </div>
             </div>
-        </footer>
+            <div class="copyright">
+                <p class="ita">© 2025 Sergio Nicoletti. Tutti i diritti riservati.</p>
+                <p class="eng">© 2025 Sergio Nicoletti. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    </body>
+    <script>
+        const body = document.body;
+        const translateBtn = document.getElementById('translateBtn');
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
 
+        function setLanguage(lang) {
+            body.dataset.lang = lang;
+            document.documentElement.lang = lang === 'it' ? 'it' : 'en';
+            translateBtn.textContent = lang === 'it' ? 'EN' : 'IT';
+            translateBtn.setAttribute('aria-label', lang === 'it' ? 'Translate to English' : 'Traduci in italiano');
+        }
+
+        translateBtn.addEventListener('click', () => {
+            setLanguage(body.dataset.lang === 'it' ? 'en' : 'it');
+        });
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = body.classList.toggle('menu-open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        navLinks.addEventListener('click', (event) => {
+            if (event.target.closest('a')) {
+                body.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener('click', (event) => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (!target) return;
+                event.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const revealElements = document.querySelectorAll('.reveal');
+
+        if (!reduceMotion && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            revealElements.forEach((element) => observer.observe(element));
+        } else {
+            revealElements.forEach((element) => element.classList.add('visible'));
+        }
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const formData = new FormData(contactForm);
+            const name = encodeURIComponent(formData.get('user_name') || '');
+            const email = encodeURIComponent(formData.get('user_email') || '');
+            const message = encodeURIComponent(formData.get('message') || '');
+            const subject = encodeURIComponent(`Messaggio dal portfolio - ${decodeURIComponent(name)}`);
+            const bodyText = `Nome: ${name}%0AEmail: ${email}%0A%0A${message}`;
+
+            window.location.href = `mailto:sernicoletti03@gmail.com?subject=${subject}&body=${bodyText}`;
+            formSuccess.classList.add('visible');
+            setTimeout(() => formSuccess.classList.remove('visible'), 5000);
+        });
+
+        setLanguage('it');
+    </script>
+</body>
 </html>
-
