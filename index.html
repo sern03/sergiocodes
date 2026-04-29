@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sergio Nicoletti | Full-Stack Developer Portfolio</title>
+    <script>
+        (() => {
+            const mobilePage = 'index_old.html';
+            const mobileQuery = window.matchMedia('(max-width: 767.98px)');
+            const goMobile = () => {
+                if (mobileQuery.matches) {
+                    window.location.replace(mobilePage + window.location.search + window.location.hash);
+                }
+            };
+
+            goMobile();
+            mobileQuery.addEventListener?.('change', goMobile);
+            mobileQuery.addListener?.(goMobile);
+        })();
+    </script>
     <link rel="icon" href="icon.png" type="image/png">
     <style>
         :root {
